@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>literature search &amp; reference management</title>
+  <meta charset="utf-8">
+  <meta name="description" content="literature search &amp; reference management">
+  <meta name="author" content="shelby bachman">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>literature search &amp; reference management</h1>
+    <h2>RA tutorial week 1, summer 2019</h2>
+    <p>shelby bachman<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+.title-slide {
+  background-color: #bbbcce; /* #EDE0CF; ; #CA9F9D*/
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic
+}
+</style>
+
+<h2>Overview</h2>
+
+<table><thead>
+<tr>
+<th>week</th>
+<th>topic</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>may 24</strong></td>
+<td><strong>literature search &amp; reference management</strong></td>
+</tr>
+<tr>
+<td>may 31</td>
+<td>R part I: syntax, variables, &amp; data types</td>
+</tr>
+<tr>
+<td>jun 7</td>
+<td>R part II: data import &amp; cleaning</td>
+</tr>
+<tr>
+<td>jun 14</td>
+<td>R part III: data cleaning &amp; organization</td>
+</tr>
+<tr>
+<td>jun 21</td>
+<td>R part IV: basic plotting, stats, &amp; R Markdown</td>
+</tr>
+<tr>
+<td>jun 28</td>
+<td>how to read a scientific paper</td>
+</tr>
+<tr>
+<td>jul 5</td>
+<td>MATLAB part I: syntax, variables, data types</td>
+</tr>
+<tr>
+<td>jul 12</td>
+<td>MATLAB part II: data manipulation, scripts, &amp; functions</td>
+</tr>
+<tr>
+<td>jul 19</td>
+<td>MATLAB part III: building a basic experiment</td>
+</tr>
+<tr>
+<td>jul 26</td>
+<td>no tutorial</td>
+</tr>
+<tr>
+<td>aug 2</td>
+<td>MATLAB part IV: building a basic experiment (cont.)</td>
+</tr>
+<tr>
+<td>aug 9</td>
+<td>data lab: working with real data in R</td>
+</tr>
+<tr>
+<td>aug 16</td>
+<td>data lab: TBA</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Conducting a literature search</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Choose a topic &amp; scope</li>
+<li>Select keywords</li>
+<li>Search databases</li>
+<li>Identify relevant references</li>
+<li>Export results to a reference manager</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Choosing keywords</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Identify the core constructs of your topic</li>
+<li>For each construct, make a list of synonyms</li>
+<li>Useful tools for identifying related words:
+
+<ul>
+<li><a href="https://www.ncbi.nlm.nih.gov/pubmed">https://www.ncbi.nlm.nih.gov/pubmed</a> --&gt; pull down <code>MeSH</code> in search bar</li>
+<li>When reading an article, look for its keywords</li>
+</ul></li>
+</ul>
+
+<p><em>Example</em>: for the construct &quot;emotion&quot; we could choose the keywords <strong>emotion</strong>, <strong>affect</strong>, &amp; <strong>arousal</strong></p>
+
+<ul>
+<li>MeSH search</li>
+<li>View related papers on PubMed</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Search databases</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>Choose the database(s) to query:</strong></p>
+
+<ul>
+<li>PubMed
+
+<ul>
+<li>Helpful feature: create an account to save your searches and collections of articles</li>
+</ul></li>
+<li>Google Scholar
+
+<ul>
+<li>Helpful features: &quot;Cited by&quot;, &quot;Find it @USC&quot;</li>
+</ul></li>
+<li>PsycInfo</li>
+<li>Access more databases at <a href="https://libraries.usc.edu/">https://libraries.usc.edu/</a> --&gt; <code>Database Quicklinks</code></li>
+</ul>
+
+<p><strong>Use boolean operators to combine your keywords and query each database.</strong></p>
+
+<ul>
+<li>Generally, use the Advanced Search feature if it exists</li>
+<li>Use quotation marks around terms with multiple words</li>
+<li>Boolean operators: <code>AND</code>, <code>OR</code>, <code>NOT</code></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Example literature search</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Let&#39;s try a search on <strong>emotion, memory and aging</strong>, using the PubMed &amp; PsycInfo databases.</p>
+
+<p>Choose keywords: </p>
+
+<table><thead>
+<tr>
+<th>emotion</th>
+<th>memory</th>
+<th>aging</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>affect</td>
+<td>recall</td>
+<td>&quot;older adulthood&quot;</td>
+</tr>
+<tr>
+<td>arousal</td>
+<td>recognition</td>
+<td>&quot;older adults&quot;</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p>Combine keywords with boolean operators:</p>
+
+<p><code>(emotion OR affect OR arousal)</code> AND <code>(memory OR recall OR recognition)</code> AND <code>(aging OR older adulthood)</code></p>
+
+<p>PubMed:<a href="https://www-ncbi-nlm-nih-gov.libproxy2.usc.edu/pubmed?otool=uscnmlib">https://www-ncbi-nlm-nih-gov.libproxy2.usc.edu/pubmed?otool=uscnmlib</a></p>
+
+<p>PsycInfo: <a href="https://search-proquest-com.libproxy2.usc.edu/psycinfo?accountid=14749">https://search-proquest-com.libproxy2.usc.edu/psycinfo?accountid=14749</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Managing search results</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Depending on the scope of your search, you may have a large number of results. Some ways to filter through those results:</p>
+
+<ul>
+<li>Restrict to only articles published within the last <code>X</code> years</li>
+<li>Restrict the keyword search to look in &quot;Title/Abstract&quot; only</li>
+</ul>
+
+<p>Regardless, you will need to review your results to identify which references are relevant. If you have a large number of results, my recommendation is to:</p>
+
+<ul>
+<li>Start by reviewing titles and eliminating titles that are obviously irrelevant</li>
+<li>After title review, review the abstract of each article</li>
+<li>After identifying relevant abstracts, download relevant articles for full-text review</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Managing search results in PubMed</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>Now, let&#39;s practice reviewing &amp; downloading the results of our earlier search in PubMed.</strong></p>
+
+<ul>
+<li>In PubMed, there are two useful options for saving the results of a search.</li>
+<li>Once you have identified relevant articles to read, select them all using the checkbox feature.</li>
+<li>Then use the <code>Send to</code> feature, and choose one of the following options:
+
+<ul>
+<li><strong>Collections</strong>: Here you can send results of a search to a &quot;Collection&quot; which stays saved on your PubMed account. <em>I use this feature often, particularly for searches with large sets of results that take me multiple days to filter through the results.</em></li>
+<li><strong>Citation manager</strong>: Here you can export the results of your search as a <code>.nbib</code> file which can be read into a citation manager.</li>
+</ul></li>
+</ul>
+
+<p><strong>Try exporting 5 results with the Citation manager option.</strong></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Citation management tools</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Citation management programs allow you to store and organize references, easily extract citations for references, and create bibliographies for collections of references. There are a number of citation management tools available, including:</p>
+
+<ul>
+<li><strong>Mendeley</strong></li>
+<li>Zotero</li>
+<li>RefWorks</li>
+</ul>
+
+<p>The remainder of today&#39;s tutorial will focus on Mendeley.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Getting started with Mendeley</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Register for an account: <a href="https://www.mendeley.com/">https://www.mendeley.com/</a></li>
+<li>Download Mendeley Desktop: <a href="https://www.mendeley.com/download-desktop/">https://www.mendeley.com/download-desktop/</a>
+
+<ul>
+<li>This download includes the desktop reference manager as well as the Word plug-in</li>
+</ul></li>
+<li>Web Importer (on your own): <a href="https://www.mendeley.com/reference-management/web-importer/#id_2">https://www.mendeley.com/reference-management/web-importer/#id_2</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Setting up Mendeley Desktop on your computer</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Set up a directory where Mendeley &quot;watches&quot; for new references:</p>
+
+<ul>
+<li><code>Mendeley Desktop</code> --&gt; <code>Preferences</code> --&gt; <code>Watched Folders</code></li>
+<li>I use a separate directory within my Downloads folder to store articles for reading and organization</li>
+<li>Download/place PDFs into this directory</li>
+<li>They will be added into the <code>Unsorted</code> section for subsequent organization</li>
+</ul>
+
+<p>Set up how Mendeley automatically names and organizes references:</p>
+
+<ul>
+<li><code>Mendeley Desktop</code> --&gt; <code>File Organizer</code></li>
+<li>Select <code>Organize my files</code> and choose the directory where they should be copied</li>
+<li>Set up how you would prefer articles to be named when they are copied by Mendeley</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Organizing references in Mendeley</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Create folders and subfolders corresponding to projects, classes, etc.
+<center>
+<img src="images/organization.png?raw=true" alt="">
+</center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Importing references to Mendeley</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>From a search in PubMed, etc.
+
+<ul>
+<li><code>File</code> --&gt; <code>Import</code> --&gt; <code>.bib</code> (or choose your format of choice)</li>
+<li><code>File</code> --&gt; <code>Add Files</code> --&gt; select PDF, etc.</li>
+</ul></li>
+<li>Using a PMID or doi identifier
+
+<ul>
+<li><code>File</code> --&gt; <code>Add Entry Manually</code> --&gt; add PMID or doi identifier of desired reference</li>
+</ul></li>
+<li>Always check the <code>Details</code> of each reference you import, and update them as necessary</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Mendeley is also a great tool for reading articles</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Double click an article to read</li>
+<li>Use the <code>Notes</code> feature on the right panel to keep track of questions, etc.</li>
+<li>Use the <code>Note</code> feature on the top toolbar to add notes within the text</li>
+<li>Use the <code>Highlight</code> feature to highlight text or a rectangle within the text, in a color of your choice</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Exporting citations from Mendeley</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Choose a citation format
+
+<ul>
+<li><code>View</code> --&gt; <code>Citation Style</code> --&gt; Choose your style of interest (often APA 6th et.)</li>
+</ul></li>
+<li>Export formatted citation(s):
+
+<ul>
+<li>higlight reference(s) of interest --&gt; <code>CTRL</code> + click reference(s) --&gt; <code>Copy As</code> --&gt; Formatted Citation</li>
+<li>paste the formatted citation(s) into word processor</li>
+</ul></li>
+<li>For writing papers, the Mendeley word plug-in is invaluable. Use it to add in-text citations and automatically generate a corresponding bibliography.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Other potentially useful tools</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Share references in Mendeley using the &quot;Groups&quot; feature:
+
+<ul>
+<li><code>Edit</code> --&gt; <code>New Group</code> --&gt; Create your group &amp; add members</li>
+</ul></li>
+<li>Web import tool: useful if you are not using your personal machine
+
+<ul>
+<li>Add references and your local Mendeley Desktop will sync later</li>
+</ul></li>
+<li>Word citation plug-in</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Practice importing references to Mendeley Desktop</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>Now, let&#39;s practice importing references using two methods.</strong></p>
+
+<ul>
+<li>First, add the references you saved earlier by importing the <code>.nbib</code> file into Mendeley</li>
+<li>Second, use your own method to import the following article:</li>
+</ul>
+
+<p><strong>Mather &amp; Sutherland. (2011). Arousal-Biased Competition in Perception and Memory. <em>Perspect Psychol Sci. 6</em>(2), 114-33. doi: 10.1177/1745691611400234.</strong></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Next week</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Introduction to R: syntax, variables, &amp; data types</p>
+
+<p><em>Please prepare for the next tutorial by installing R and R Studio:</em></p>
+
+<ul>
+<li>To install R: <a href="https://cran.cnr.berkeley.edu/">https://cran.cnr.berkeley.edu/</a></li>
+<li>To install R Studio: <a href="https://www.rstudio.com/products/rstudio/download/#download">https://www.rstudio.com/products/rstudio/download/#download</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Conducting a literature search'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Choosing keywords'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Search databases'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Example literature search'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Managing search results'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Managing search results in PubMed'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Citation management tools'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Getting started with Mendeley'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Setting up Mendeley Desktop on your computer'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Organizing references in Mendeley'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Importing references to Mendeley'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Mendeley is also a great tool for reading articles'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Exporting citations from Mendeley'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Other potentially useful tools'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Practice importing references to Mendeley Desktop'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Next week'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='NA'>
+         18
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
