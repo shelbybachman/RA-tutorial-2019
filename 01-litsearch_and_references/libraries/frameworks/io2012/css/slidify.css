@@ -34,16 +34,16 @@
 
 /* Styles for Title Slide */
 .title-slide hgroup > h1{
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald';
 }
 
 .title-slide hgroup > h2{
-  font-family: 'Oswald', 'Calibri', sans-serif;
+  font-family: 'Oswald', 'Calibri';
 }
 
 /* Fonts and Spacing */
 article p, article li, article li.build, section p, section li{
-  font-family: 'Open Sans','Helvetica', 'Crimson Text', sans-serif;
+  font-family: 'Open Sans'; /*,'Helvetica', 'Crimson Text', sans-serif; */
   text-align: justify;
   font-size:22px;
   line-height: 1.5em;
@@ -51,7 +51,7 @@ article p, article li, article li.build, section p, section li{
 }
 
 slide:not(.segue) h2{
-  font-family: 'Calibri', Arial, sans-serif;
+  font-family: 'Calibri'; /*, Arial, sans-serif; */
   font-size: 52px;
   font-style: normal;
   font-weight: bold;
