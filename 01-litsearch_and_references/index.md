@@ -28,6 +28,12 @@ em {
 .title-slide hgroup > h2{
   font-family: 'Oswald', 'Calibri';
 }
+h1 {
+  font-family: 'Oswald';
+}
+h2 {
+  font-family: 'Oswald';
+}
 </style>
 
 ## Overview
