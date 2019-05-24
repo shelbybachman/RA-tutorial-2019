@@ -43,7 +43,7 @@
 
 /* Fonts and Spacing */
 article p, article li, article li.build, section p, section li{
-  font-family: 'Open Sans','Helvetica', 'Crimson Text', 'Garamond',  'Palatino', sans-serif;
+  font-family: 'Open Sans','Helvetica', 'Crimson Text', sans-serif;
   text-align: justify;
   font-size:22px;
   line-height: 1.5em;
@@ -364,7 +364,7 @@ pre code {
 }
 
 .title-slide hgroup > h1{
- font-family: 'Oswald', 'Helvetica', sanserif; 
+ font-family: 'Oswald', sanserif; 
 }
 
 .title-slide hgroup > h1, 
