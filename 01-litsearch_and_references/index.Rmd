@@ -21,6 +21,13 @@ strong {
 em {
   font-style: italic
 }
+.title-slide hgroup > h1{
+  font-family: 'Oswald';
+}
+
+.title-slide hgroup > h2{
+  font-family: 'Oswald', 'Calibri';
+}
 </style>
 
 ## Overview
