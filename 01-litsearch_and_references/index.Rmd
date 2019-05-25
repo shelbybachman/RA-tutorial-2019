@@ -26,13 +26,10 @@ em {
 }
 
 .title-slide hgroup > h2{
-  font-family: 'Oswald', 'Calibri';
+  font-family: 'Oswald','Calibri';
 }
-h1 {
-  font-family: 'Oswald';
-}
-h2 {
-  font-family: 'Oswald';
+slide:not(.segue) h2{
+  font-family: Trebuchet MS; /*, 'Oswald', sans-serif; */
 }
 </style>
 
@@ -251,14 +248,3 @@ Introduction to R: syntax, variables, & data types
 
 - To install R: https://cran.cnr.berkeley.edu/
 - To install R Studio: https://www.rstudio.com/products/rstudio/download/#download
-
---- .class #id 
-
-
-
-
-
-
-
-
-
