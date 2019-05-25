@@ -51,7 +51,7 @@ article p, article li, article li.build, section p, section li{
 }
 
 slide:not(.segue) h2{
-  font-family: 'Calibri'; /*, Arial, sans-serif; */
+  font-family: 'Helvetica'; /*, Arial, sans-serif; */
   font-size: 52px;
   font-style: normal;
   font-weight: bold;
