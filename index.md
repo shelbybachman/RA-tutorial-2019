@@ -3,4 +3,5 @@
 
 ## Week 2: R part I (syntax & data types)
 [slides](https://github.com/shelbybachman/RA-tutorial-2019/02-R_part1/)
+<br>
 [script](https://raw.githubusercontent.com/shelbybachman/RA-tutorial-2019/master/02-R_part1/R_part1.R)
