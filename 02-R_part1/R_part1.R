@@ -17,7 +17,7 @@ y <- 3
 x^2
 
 # now add x and y together, and store the result in a third object 'z'
-
+z <- x + y
 
 # find the square root of the sum of x-squared and y-squared
 sqrt(x^2 + y^2)
@@ -26,7 +26,7 @@ sqrt(x^2 + y^2)
 vector_a <- c(x, y, z)
 
 # print the second element of vector_a
-
+vector_a[2]
 
 # compute the number of elements in vector_a
 length(vector_a)
@@ -39,13 +39,15 @@ unique(vector_a)
 length(unique(vector_a))
 
 # determine whether the third element of vector_a is greater than 5
-
+vector_a[3] > 5
 
 # create a vector 'vector_b' containing the squares of x, y, and z
+vector_b <- c(x^2, y^2, z^2)
+vector_a^2
 
-
-# create a matrix 'our_matrix' containing vector_a in row 1 and vector_b in row 2
+# create a matrix 'our_matrix' containing vector_a in column 1 and vector_b in column 2
 our_matrix <- matrix(c(vector_a, vector_b), nrow = 3, ncol = 2, byrow = FALSE)
+our_matrix
 
 # get the dimensions of our_matrix
 dim(our_matrix)
@@ -56,10 +58,10 @@ ncol(our_matrix)
 our_matrix[,1]
 
 # print the number in the 3rd row & 2nd column of our_matrix
-
+our_matrix[3,2]
 
 # take the row-wise sum of columns 1 & 2 of our_matrix
-
+our_matrix[,1] + our_matrix[,2]
 
 # add a third column to our_matrix, consisting of the row-wise sum of columns 1 & 2
 our_matrix <- matrix(c(our_matrix, (our_matrix[,1]+our_matrix[,2])), nrow = 3, ncol = 3, byrow = FALSE)
@@ -74,20 +76,20 @@ our_dataframe <- as.data.frame(our_matrix)
 names(our_dataframe) <- c('a', 'a_squared', 'sum')
 
 # now we can check that the column names were applied
-
+names(our_dataframe)
 
 # print the sum column
 our_dataframe$sum
 
 # print the second value in the a_squared column
-
+our_dataframe$a_squared[2]
 
 # add a new column to our_dataframe equal to the square root of the sum, named 'sum_sqrt'
 our_dataframe$sum_sqrt <- sqrt(our_dataframe$sum)
 our_dataframe
 
 # take the sum of the new 'sum_sqrt' column
-
+sum(our_dataframe$sum_sqrt)
 
 # the great thing about dataframes is that you can label columns, rows, 
 # and you can include multiple classes of data (i.e. character and numeric) 
@@ -114,10 +116,10 @@ str(ToothGrowth)
 table(ToothGrowth$dose)
 
 # create a table showing number of observations where dose is greater than 1
-
+table(ToothGrowth$dose > 1)
 
 # create a table showing number of observations for each dose for each supplement type
-
+table(ToothGrowth$dose, ToothGrowth$supp)
 
 #### section 3: basic stats & plotting
 
@@ -127,7 +129,7 @@ summary(ToothGrowth)
 # find the maximum, minimum, and range of the tooth length values
 max(ToothGrowth$len)
 min(ToothGrowth$len)
-
+range(ToothGrowth$len)
 
 # find the mean tooth length, stripping NAs if they exist
 mean(ToothGrowth$len)
@@ -137,16 +139,17 @@ table(is.na(ToothGrowth$len))
 mean(ToothGrowth$len, na.rm = TRUE)
 
 # find the standard deviation of tooth length
-
+sd(ToothGrowth$len, na.rm = TRUE)
 
 # make a histogram of tooth length in the guinea pigs
 hist(ToothGrowth$len)
 
 # make some aesthetic improvements to the plot
 ?hist
-
-
-
+hist(ToothGrowth$len, 
+     xlab = "Tooth Length", ylab = "Frequency",
+     main = "Histogram of tooth length",
+     col = "turquoise")
 
 # create a new variable in the ToothLength dataframe 'randNumber' consisting of a random number
 ?rnorm
@@ -156,19 +159,20 @@ ToothGrowth$randNumber <- rnorm(nrow(ToothGrowth))
 plot(ToothGrowth$len, ToothGrowth$randNumber)
 
 # make some aesthetic improvements ot the plot
-
-
-
+plot(ToothGrowth$len, ToothGrowth$randNumber,
+     xlab = "Tooth length", ylab = "Random number", 
+     main = "Scatterplot", 
+     col = "magenta")
 
 # make a boxplot of tooth length vs. supplementation method
-boxplot(len ~ supp, data = ToothGrowth,
+boxplot(len ~ supp, ToothGrowth,
         xlab = 'supplementation method', ylab = 'tooth length', 
         main = 'boxplot of tooth length by supp. method')
 
 # make a boxplot of tooth length by supplementation method AND dose
-
-
-
+boxplot(len ~ supp:dose, ToothGrowth,
+        xlab = 'supplementation method', ylab = 'tooth length', 
+        main = 'boxplot of tooth length by supp. method')
 
 # it looks like there is an effect of supplementation method on tooth length.
 # do a t-test to determine whether tooth length differs significantly by supplement.
