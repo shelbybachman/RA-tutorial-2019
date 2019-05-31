@@ -66,6 +66,16 @@ aug 16    | data lab: TBA
 
 --- .class #id 
 
+## Resources for learning R
+
+[Swirl](https://swirlstats.com/students.html): free beginning through advanced lessons that you can run in RStudio
+
+[Datacamp](https://www.datacamp.com/courses/free-introduction-to-r): free introduction to R course (more advanced lessons cost $)
+
+[R for Data Science](https://r4ds.had.co.nz/): book by Hadley Wickham that explains the "tidy data" framework we will start learning next week
+
+--- .class #id 
+
 ## RStudio
 
 RStudio is an "integrated development environment" for R. In other words, it is your interface for working with R code.
@@ -163,5 +173,5 @@ data_fruits; str(data_fruits)
   - *Example*: `?mean` shows the help page for the mean() function
 - On a Mac, use `command + Enter` to run a single line or highlighted section within an R script.
 
-Let's try some basic operations in R. Open the `R_part1.R` script in RStudio.
+Let's try some basic operations in R. Open R Studio, then open a new R script. Copy the text from the script for this lession into the R script.
 
