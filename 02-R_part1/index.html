@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>R part I (syntax &amp; data types)</title>
+  <meta charset="utf-8">
+  <meta name="description" content="R part I (syntax &amp; data types)">
+  <meta name="author" content="shelby bachman">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>R part I (syntax &amp; data types)</h1>
+    <h2>RA tutorial week 1, summer 2019</h2>
+    <p>shelby bachman<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+.title-slide {
+  background-color: #bbbcce; /* #EDE0CF; ; #CA9F9D*/
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic
+}
+.title-slide hgroup > h1{
+  font-family: 'Oswald';
+}
+
+.title-slide hgroup > h2{
+  font-family: 'Oswald','Calibri';
+}
+slide:not(.segue) h2{
+  font-family: Trebuchet MS; /*, 'Oswald', sans-serif; */
+}
+</style>
+
+<h2>Overview</h2>
+
+<table><thead>
+<tr>
+<th>week</th>
+<th>topic</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>may 24</td>
+<td>literature search &amp; reference management</td>
+</tr>
+<tr>
+<td><strong>may 31</strong></td>
+<td><strong>R part I: syntax &amp; data types</strong></td>
+</tr>
+<tr>
+<td>jun 7</td>
+<td>R part II: data import &amp; cleaning</td>
+</tr>
+<tr>
+<td>jun 14</td>
+<td>R part III: data cleaning &amp; organization</td>
+</tr>
+<tr>
+<td>jun 21</td>
+<td>R part IV: basic plotting, stats, &amp; R Markdown</td>
+</tr>
+<tr>
+<td>jun 28</td>
+<td>how to read a scientific paper</td>
+</tr>
+<tr>
+<td>jul 5</td>
+<td>MATLAB part I: syntax, variables, data types</td>
+</tr>
+<tr>
+<td>jul 12</td>
+<td>MATLAB part II: data manipulation, scripts, &amp; functions</td>
+</tr>
+<tr>
+<td>jul 19</td>
+<td>MATLAB part III: building a basic experiment</td>
+</tr>
+<tr>
+<td>jul 26</td>
+<td>no tutorial</td>
+</tr>
+<tr>
+<td>aug 2</td>
+<td>MATLAB part IV: building a basic experiment (cont.)</td>
+</tr>
+<tr>
+<td>aug 9</td>
+<td>data lab: working with real data in R</td>
+</tr>
+<tr>
+<td>aug 16</td>
+<td>data lab: TBA</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Why use R?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Open-source</li>
+<li>Free</li>
+<li>Versatile (a language, not just a statistical package)
+
+<ul>
+<li>Stats &amp; plotting</li>
+<li>Data cleaning &amp; organization</li>
+<li>Scripts &amp; functions</li>
+<li>Data products</li>
+</ul></li>
+<li>Large online user community</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>RStudio</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>RStudio is an &quot;integrated development environment&quot; for R. In other words, it is your interface for working with R code.</p>
+
+<p>Windows within R Studio:</p>
+
+<ul>
+<li><strong>Console</strong>: enter code here</li>
+<li><strong>Files</strong>: shows files and directories in your working directory</li>
+<li><strong>Plots</strong>: displays any plots you create</li>
+<li><strong>Packages</strong>: shows available and loaded packages</li>
+<li><strong>Help</strong>: shows more information about a command of interest</li>
+<li><strong>Environment</strong>: displays variables and objects you have created or loaded</li>
+<li><strong>Tabbed area at top left</strong>: scripts and data are displayed here</li>
+</ul>
+
+<p>At first, we will mostly use the Console, Plots, Help, and Environment windows.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Object types in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>When we program, we usually need to store information in <strong>variables</strong>. In R, variables are assigned with R objects. There are several types of R objects:</p>
+
+<ul>
+<li>vector</li>
+<li>matrix</li>
+<li>list</li>
+<li>factor</li>
+<li>dataframe</li>
+</ul>
+
+<p>On the next slides, we will explore each type of object.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Vectors, matrices &amp; arrays</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>Vectors</strong> are one-dimensional and hold elements of a single class.</p>
+
+<p><em>(Classes in R: numeric, integer, character, logical, complex, raw)</em></p>
+
+<p>Example of a numeric vector:</p>
+
+<p><code>4, 18, 3, 7, 9</code></p>
+
+<p>Example of a character vector:</p>
+
+<p><code>Mon, today, Weds, Fri</code> </p>
+
+<p><strong>Matrices</strong> are two-dimensional and hold elements of a single class. 
+<strong>Arrays</strong> are multi-dimensional and hold elements of a single class.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Lists &amp; factors</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>Lists</strong> can contain elements from different classes.</p>
+
+<p><code>[[&#39;a&#39;]] [[1, 2, 3]] [[7]] [[&#39;cat&#39;]]</code></p>
+
+<p><strong>Factors</strong> are vectors that contain embedded information about the unique values of the variable within the vector.</p>
+
+<p>As an example, the following is a factor object:</p>
+
+<p><code>apple pear orange pear pear apple orange pear</code></p>
+
+<p class='..'>and R knows that the factor has 3 levels: </p>
+
+<p><code>apple orange pear</code></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Dataframes</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Dataframes are two-dimensional table objects that can contain elements from different classes. </p>
+
+<p>An example of a dataframe is shown below:</p>
+
+<pre><code class="r">data_fruits; str(data_fruits)
+</code></pre>
+
+<pre><code>##    fruit letters rating
+## 1  apple       5    1.5
+## 2 banana       6    3.0
+## 3  melon       5    5.0
+## 4   pear       4    3.0
+</code></pre>
+
+<pre><code>## &#39;data.frame&#39;:    4 obs. of  3 variables:
+##  $ fruit  : Factor w/ 4 levels &quot;apple&quot;,&quot;banana&quot;,..: 1 2 3 4
+##  $ letters: num  5 6 5 4
+##  $ rating : num  1.5 3 5 3
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Basics</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>rm(list = ls())</code> clears your workspace</li>
+<li>Use the <code>&lt;-</code> operator to create objects (you can also use <code>=</code>, but I reserve this for function arguments)
+
+<ul>
+<li><em>Example</em>: <code>a &lt;- 10</code> assigns a value of 10 to the <code>a</code> object</li>
+</ul></li>
+<li>Call a function by enclosing its arguments in parentheses:
+
+<ul>
+<li><code>object_name &lt;- function(input, argument = value)</code></li>
+</ul></li>
+<li>Use <code>#</code> at the start of a line to incude comments in your code</li>
+<li>Enter <code>?</code> before the name of a command to open its help page
+
+<ul>
+<li><em>Example</em>: <code>?mean</code> shows the help page for the mean() function</li>
+</ul></li>
+<li>On a Mac, use <code>command + Enter</code> to run a single line or highlighted section within an R script.</li>
+</ul>
+
+<p>Let&#39;s try some basic operations in R. Open the <code>R_part1.R</code> script in RStudio.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Why use R?'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='RStudio'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Object types in R'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Vectors, matrices &amp; arrays'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Lists &amp; factors'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Dataframes'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Basics'>
+         8
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
