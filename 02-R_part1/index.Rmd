@@ -1,6 +1,6 @@
 ---
 title       : R part I (syntax & data types)
-subtitle    : RA tutorial week 1, summer 2019
+subtitle    : RA tutorial week 2, summer 2019
 author      : shelby bachman
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
