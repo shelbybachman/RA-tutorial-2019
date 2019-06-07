@@ -10,3 +10,5 @@
 [slides](https://shelbybachman.github.io/RA-tutorial-2019/03-R_part2/)
 <br>
 [script](https://raw.githubusercontent.com/shelbybachman/RA-tutorial-2019/master/03-R_part2/R_part2.R)
+<br>
+[data](https://github.com/shelbybachman/RA-tutorial-2019/blob/master/03-R_part2/data.zip)
