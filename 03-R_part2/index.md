@@ -40,7 +40,7 @@ week | topic
 may 24 | literature search & reference management
 may 31    | R part I: syntax & data types
 **jun 7**     | **R part II: data import & cleaning with dplyr**
-jun 14    | R part III: basic plotting with ggplot2
+jun 14    | R part III: tidy data & plotting with ggplot2
 jun 21    | R part IV: R markdown & miscellaneous R topics
 jun 28    | how to read a scientific paper
 jul 5     | MATLAB part I: syntax, variables, data types
@@ -62,11 +62,11 @@ aug 16    | data lab: TBA
 
 --- .class #id
 
-## More resources for learning about tidy data & dplyr
+## More resources for learning to clean & organize data in R
 
 [R for Data Science] (https://r4ds.had.co.nz/)
 
-[Tidy Data] (https://ramnathv.github.io/pycon2014-r/explore/tidy.html)
+[Tidy Data] (https://ramnathv.github.io/pycon2014-r/explore/tidy.html) ...more next week!
 
 --- .class #id
 
