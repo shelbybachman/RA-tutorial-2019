@@ -6,7 +6,7 @@
 <br>
 [script](https://raw.githubusercontent.com/shelbybachman/RA-tutorial-2019/master/02-R_part1/R_part1.R)
 
-## Week 3: R part II (data cleaning & import)
+## Week 3: R part II (data import & cleaning)
 [slides](https://shelbybachman.github.io/RA-tutorial-2019/03-R_part2/)
 <br>
 [script](https://raw.githubusercontent.com/shelbybachman/RA-tutorial-2019/master/03-R_part2/R_part2.R)
