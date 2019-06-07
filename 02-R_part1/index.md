@@ -185,5 +185,5 @@ data_fruits; str(data_fruits)
   - *Example*: `?mean` shows the help page for the mean() function
 - On a Mac, use `command + Enter` to run a single line or highlighted section within an R script.
 
-Let's try some basic operations in R. Open R Studio, then open a new R script. Copy the text from the script for this lession into the R script.
+Let's try some basic operations in R. Open R Studio, then open a new R script. Copy the text from the script for this lesson into the R script.
 

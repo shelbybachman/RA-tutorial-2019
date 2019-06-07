@@ -1,5 +1,5 @@
 ###################### 
-# RA tutorial / week 1
+# RA tutorial / week 2
 ######################
 
 ###### section 1: vectors, matrices, and operations
