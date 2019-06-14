@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>R part III (tidy data &amp; plotting with ggplot2)</title>
+  <meta charset="utf-8">
+  <meta name="description" content="R part III (tidy data &amp; plotting with ggplot2)">
+  <meta name="author" content="shelby bachman">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>R part III (tidy data &amp; plotting with ggplot2)</h1>
+    <h2>RA tutorial week 4, summer 2019</h2>
+    <p>shelby bachman<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+.title-slide {
+  background-color: #bbbcce; /* #EDE0CF; ; #CA9F9D*/
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic
+}
+.title-slide hgroup > h1{
+  font-family: 'Oswald';
+}
+
+.title-slide hgroup > h2{
+  font-family: 'Oswald','Calibri';
+}
+slide:not(.segue) h2{
+  font-family: Trebuchet MS; /*, 'Oswald', sans-serif; */
+}
+</style>
+
+<h2>Overview</h2>
+
+<table><thead>
+<tr>
+<th>week</th>
+<th>topic</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>may 24</td>
+<td>literature search &amp; reference management</td>
+</tr>
+<tr>
+<td>may 31</td>
+<td>R part I: syntax &amp; data types</td>
+</tr>
+<tr>
+<td>jun 7</td>
+<td>R part II: data import &amp; cleaning with dplyr</td>
+</tr>
+<tr>
+<td><strong>jun 14</strong></td>
+<td><strong>R part III: tidy data &amp; plotting with ggplot2</strong></td>
+</tr>
+<tr>
+<td>jun 21</td>
+<td>R part IV: R markdown &amp; miscellaneous R topics</td>
+</tr>
+<tr>
+<td>jun 28</td>
+<td>how to read a scientific paper</td>
+</tr>
+<tr>
+<td>jul 5</td>
+<td>MATLAB part I: syntax, variables, data types</td>
+</tr>
+<tr>
+<td>jul 12</td>
+<td>MATLAB part II: data manipulation, scripts, &amp; functions</td>
+</tr>
+<tr>
+<td>jul 19</td>
+<td>MATLAB part III: building a basic experiment</td>
+</tr>
+<tr>
+<td>jul 26</td>
+<td>no tutorial</td>
+</tr>
+<tr>
+<td>aug 2</td>
+<td>MATLAB part IV: building a basic experiment (cont.)</td>
+</tr>
+<tr>
+<td>aug 9</td>
+<td>data lab: working with real data in R</td>
+</tr>
+<tr>
+<td>aug 16</td>
+<td>data lab: TBA</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Today</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Review of data manipulation with dplyr</li>
+<li>Tidy data
+
+<ul>
+<li>Definition and examples</li>
+<li>Gather() and spread() functions</li>
+</ul></li>
+<li>Basic plotting with ggplot2</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Review of dplyr</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Last week, we were introduced to the <strong>dplyr package</strong>, its useful functions for manipulating and summarizing data, and the pipe operator: <code>%&gt;%</code>.</p>
+
+<p>Review of dplyr functions:</p>
+
+<ul>
+<li><code>select()</code>: select variables to include in dataframe and, if desired, rename variables</li>
+<li><code>rename()</code>: rename variables</li>
+<li><code>filter()</code>: filter dataframe based on certain conditions</li>
+<li><code>mutate()</code>: create new variables</li>
+<li><code>summarize()</code>: summarize certain variables</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Review of dplyr (cont.)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Here is an example of how we might use these commands to (a) manipulate data and then (b) summarize it.</p>
+
+<p>First, we load the <code>iris</code> dataset, which is one of the built-in datasets in R. It includes measures of sepal and petal width and height for flowers from different iris species.</p>
+
+<pre><code class="r">data(iris)
+str(iris)
+</code></pre>
+
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Review of dplyr (cont.)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Next, we use dplyr functions to perform several manipulations on the data:</p>
+
+<pre><code class="r">iris_new &lt;- iris %&gt;%
+  select(length = Petal.Length, width = Petal.Width, Species) %&gt;%
+  filter(length &gt; 3.0) %&gt;%
+  mutate(width_name = ifelse(width &gt; 2.0, &#39;wide&#39;, &#39;narrow&#39;))
+
+head(iris_new, 5)
+</code></pre>
+
+<pre><code>##   length width    Species width_name
+## 1    4.7   1.4 versicolor     narrow
+## 2    4.5   1.5 versicolor     narrow
+## 3    4.9   1.5 versicolor     narrow
+## 4    4.0   1.3 versicolor     narrow
+## 5    4.6   1.5 versicolor     narrow
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Review of dplyr (cont.)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Finally, we can summarize certain variables within the manipulated data. For instance, if we wanted to calculate the mean petal length and width by species:</p>
+
+<pre><code class="r">iris_new %&gt;%
+  group_by(Species) %&gt;%
+  summarize(mean_length = mean(length, na.rm = TRUE),
+            mean_width = mean(width, na.rm = TRUE))
+</code></pre>
+
+<pre><code>## # A tibble: 2 x 3
+##   Species    mean_length mean_width
+##   &lt;fct&gt;            &lt;dbl&gt;      &lt;dbl&gt;
+## 1 versicolor        4.29       1.33
+## 2 virginica         5.55       2.03
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Tidy data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>What is tidy data?</strong></p>
+
+<ul>
+<li>Every row contains an observation</li>
+<li>Every column is a variable</li>
+<li>Everything you need for an analysis is confined to one dataset</li>
+</ul>
+
+<p><strong>Example of tidy data</strong></p>
+
+<pre><code>##             car  mpg cyl
+## 1     Mazda RX4 21.0   6
+## 2 Mazda RX4 Wag 21.0   6
+## 3    Datsun 710 22.8   4
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Tidy vs. untidy data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>Features of untidy data</strong></p>
+
+<ul>
+<li>Multiple variables in a single column (<em>as below</em>)</li>
+<li>Multiple observations in a single row</li>
+<li>Column labels are not variable labels, but observations or values</li>
+<li>Having multiple dataframes for a single analysis</li>
+</ul>
+
+<p><strong>Example of untidy data</strong></p>
+
+<pre><code>##                 car variable value
+## 1         Mazda RX4      mpg  21.0
+## 2     Mazda RX4 Wag      mpg  21.0
+## 3        Datsun 710      mpg  22.8
+## 4    Hornet 4 Drive      mpg  21.4
+## 5 Hornet Sportabout      mpg  18.7
+## 6           Valiant      mpg  18.1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Converting untidy to tidy data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>It is rarely the case that we are given tidy data to do an analysis. Most of the time, we will need to clean up untidy data and make it tidy, in order to do analysis and plotting in R. This process of <strong>tidying</strong> is what we will focus on for the next part of today&#39;s tutorial. (See <a href="http://vita.had.co.nz/papers/tidy-data.html">this paper</a> by Hadley Wickham for a lengthier discussion of tidy data.)</p>
+
+<p><em>However, it is worth noting that if you are creating an experiment or a way to collect data, you will save yourself time upfront by storing the resulting data in a tidy format.</em></p>
+
+<p><strong>The tidyr package contains several helpful functions:</strong></p>
+
+<ul>
+<li><code>gather()</code>: collapses multiple columns into fewer columns, based on a key-value pair</li>
+<li><code>spread()</code>: spreads a dataframe into more columns, based on a key-value pair</li>
+</ul>
+
+<p>Let&#39;s practice in R: open RStudio, navigate to the <a href="https://raw.githubusercontent.com/shelbybachman/RA-tutorial-2019/master/04-R_part3/R_part3.R">script</a> for this lecture, and copy the script text into a new R script.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Introduction to ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>In the first week of the tutorial, we learned to create basic plots using the base R functions (<code>hist()</code>, <code>plot()</code>, <code>boxplot()</code>). As an alternative to these options, the <code>ggplot2</code> package is widely used to create aesthetically-pleasing plots with simple syntax and significant flexibility. </p>
+
+<p>The syntax for <code>ggplot2</code> is based on the <strong>grammar of graphics</strong>. The idea is that you build a plot in a consistent way: using a data source, a coordinate system, and visual elements that represent your data (<em>geoms</em>). I think of the process as follows:</p>
+
+<ul>
+<li>First, create a ggplot object specifying the data and variables to be plotted</li>
+<li>Then, add (<code>+</code>) layers to the plot, which can include:
+
+<ul>
+<li>Plot (<em>geom</em>) type(s) (dot, line, bar, boxplot, etc.)</li>
+<li>Color themes</li>
+<li>Scale information for the axes</li>
+<li>Axis label and title information</li>
+<li>And much more!</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>ggplot2: basic example</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Create ggplot object with <code>ggplot()</code></li>
+<li>Add layers to plot with <code>+</code> operator</li>
+</ol>
+
+<p>Below I create a dot plot of miles per gallon vs. number of cylinders. </p>
+
+<pre><code class="r">ggplot(data = mtcars, aes(x = cyl, y = mpg)) +
+  geom_point() +
+  labs(x = &#39;number of cylinders&#39;, y = &#39;miles per gallon&#39;)
+</code></pre>
+
+<p><img src="assets/fig/example_6-1.png" title="plot of chunk example_6" alt="plot of chunk example_6" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>ggplot2: grouping &amp; aesthetics</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Suppose now we want to color the data points according to number of cylinders. Let&#39;s also change the overall theme of the plot. (We&#39;ll visit more themes later in today&#39;s tutorial.)</p>
+
+<pre><code class="r">ggplot(data = mtcars, aes(x = factor(cyl), y = mpg, colour = factor(cyl))) +
+  geom_point() +
+  labs(x = &#39;number of cylinders&#39;, y = &#39;miles per gallon&#39;, colour = &#39;cyl&#39;) +
+  scale_colour_brewer(palette = &#39;Set2&#39;) +
+  theme_classic()
+</code></pre>
+
+<p><img src="assets/fig/example_7-1.png" title="plot of chunk example_7" alt="plot of chunk example_7" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>ggplot2: combining geoms</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Often times we want to show a summary of the data (i.e. means) with individual data points.</p>
+
+<pre><code class="r">mtcars_summary &lt;- mtcars %&gt;% 
+  group_by(cyl) %&gt;%
+  summarize(mpg = mean(mpg, na.rm = TRUE))
+
+ggplot(data = mtcars_summary, aes(x = factor(cyl), y = mpg, fill = factor(cyl))) +
+  geom_bar(stat = &quot;identity&quot;) +
+  geom_point(data = mtcars) +
+  labs(x = &#39;number of cylinders&#39;, y = &#39;miles per gallon&#39;, fill = &#39;cyl&#39;)
+</code></pre>
+
+<p><img src="assets/fig/example_8-1.png" title="plot of chunk example_8" alt="plot of chunk example_8" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>More resources on tidy data &amp; ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><a href="https://ramnathv.github.io/pycon2014-r/explore/tidy.html">Tidy Data</a> </p>
+
+<p><a href="http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html">ggplot2 tutorial</a></p>
+
+<p><a href="https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf">ggplot2 cheat sheet</a></p>
+
+<p>Now, let&#39;s get started making our own plots with ggplot2...</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Today'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Review of dplyr'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Review of dplyr (cont.)'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Review of dplyr (cont.)'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Review of dplyr (cont.)'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Tidy data'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Tidy vs. untidy data'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Converting untidy to tidy data'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Introduction to ggplot2'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='ggplot2: basic example'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='ggplot2: grouping &amp; aesthetics'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='ggplot2: combining geoms'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='More resources on tidy data &amp; ggplot2'>
+         14
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

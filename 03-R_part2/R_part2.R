@@ -17,12 +17,12 @@ install.packages('dplyr')
 library(dplyr)
 
 # install the following packages: data.table, rprojroot
-
-
+install.packages('data.table')
+install.packages('rprojroot')
 
 # load the data.table and rprojroot packages 
-
-
+library(data.table)
+library(rprojroot)
 
 ###### section 2: setting your filepath
 
@@ -38,7 +38,7 @@ getwd()
 
 # set the current working directory to the location where you unzipped the file
 # (use tabs when entering this command to help yourself)
-
+setwd('/Users/shelbybachman/Documents/Mather_Lab/RA-tutorial-2019/03-R_part2/')
 
 # list all the files in your directory
 list.files()
@@ -46,7 +46,7 @@ list.files()
 # sometimes it is useful to set a "root" directory
 # and set other directories in relation to the root
 myDir <- getwd()
-myDir_data <- cat(myDir, '/data', sep='')
+myDir_data <- cat(myDir, 'data', sep='/')
 setwd(myDir_data)
 
 # at the end, we will go over a more elegant way to do this
@@ -73,7 +73,6 @@ setwd(myDir_data)
 
 # now, let's import the data files for today's tutorial using the fread() function
 # load the 1_SART.csv data into a dataframe named data_sub1 &
-# load the 2_SART.csv data into a dataframe named data_sub
 data_sub1 <- fread(file = '1_SART.csv', na.strings = 'NaN', stringsAsFactors = TRUE)
 
 
@@ -83,10 +82,10 @@ data_sub1 <- fread(file = '1_SART.csv', na.strings = 'NaN', stringsAsFactors = T
 # they saw a stream of numbers and had to press SPACE for all numbers except the target number (3)
 
 # preview the first 10 rows of the data_sub1 dataframe
-
+head(data_sub1, 10)
 
 # get a summary of the variables in the data_sub1 dataframe
-
+str(data_sub1)
 
 ###### section 3: basic functions in dplyr
 
@@ -113,7 +112,8 @@ data_sub1$resp_made <- ifelse(is.na(data_sub1$resp_RT), yes = 0, no = 1)
 
 # (b) using dplyr:
 data_sub1 <- data_sub1 %>%
-  mutate()
+  mutate(target_trial = ifelse(number == 3, yes = 1, no = 0),
+         resp_made = ifelse(is.na(resp_RT), yes = 0, no = 1))
 
 ### SELECT() - selecting only relevant variables, renaming if necessary
 # create a new dataframe from data_sub1, called `data_sub1_threeVars`, 
@@ -125,12 +125,15 @@ names(data_sub1_threeVars) <- c('subID', 'target_trial', 'RT')
 
 # (b) using dplyr:
 data_sub1_threeVars <- data_sub1 %>%
-  select()
+  select(subID, target_trial, RT = resp_RT)
+
+data_sub1 %>%
+  select(-subID)
 
 ### RENAME() - rename selected variables
 # rename the variable resp_RT to RT in the original dataframe, data_sub1
 data_sub1 <- data_sub1 %>%
-  rename()
+  rename(RT = resp_RT)
 
 ### FILTER() - filtering based on one or more variables
 # filter data_sub1 to include only trials where reaction time (RT) was less than 0.5s,
@@ -140,7 +143,7 @@ data_sub1_filtered <- data_sub1[data_sub1$RT < 0.5,]
 
 # (b) using dplyr:
 data_sub1_filtered <- data_sub1 %>%
-  filter()
+  filter(RT < 0.5)
 
 ### ARRANGE() - reorder the dataframe based on a particular variable
 # reorder data_sub1 based on ascending values of font_size (indicates the font size of the stimuli shown on each trial)
@@ -151,17 +154,21 @@ data_sub1_reordered <- data_sub1[new_order,]
 
 # (b) using dplyr: 
 data_sub1_reordered <- data_sub1 %>%
-  arrange()
+  arrange(desc(font_size))
 
 ### combining dplyr commands
 # perform the same modifications we made to data_sub1 to data_sub2
 # (1. create the target_trial variable, 2. create the resp_made variable, 3. rename resp_RT to RT)
+
+data_sub2 <- fread(file = '2_SART.csv', na.strings = 'NaN', stringsAsFactors = TRUE)
+
 data_sub2 <- data_sub2 %>%
-  mutate() %>%
-  rename()
+  mutate(target_trial = ifelse(number == 3, yes = 1, no = 0),
+         resp_made = ifelse(is.na(resp_RT), yes = 0, no = 1)) %>%
+  rename(RT = resp_RT)
 
 # check that our dataframes have the same variable names
-
+names(data_sub1) == names(data_sub2)
 
 ### joining data 
 # now we'd like to combine data_sub1 and data_sub2 in a single dataframe
@@ -185,20 +192,6 @@ data_demographics <- fread('demographics.csv')
 ?left_join
 data_SART <- left_join(data_SART, data_demographics, by = 'subID')
 
-# now i will introduce something to make this much simpler
-# R project files
-# go ahead and create a new R project file
-# and place it in the directory of your choice, 
-# but make sure the data files are in the same directory or one level below
-# name your R project file `R_part2.rproj`
-
-# i usually place my R project file in the "main" folder of a project
-# and then i have a lot of subfolders with data, scripts, stimuli, etc.
-# and the R project file is going to allow us to easily
-# reference files within that project
-
-# first, load the 'rprojroot' package we installed earlier
-# (do this in every script where you will use this command)
 
 ###### section 3: summarizing data with dplyr
 
@@ -222,8 +215,14 @@ data_SART %>%
 # but include only trials where the number 5 was shown, using dplyr only
 # also include in the summary how many trials had a 5 for each participant
 # store the result in a dataframe, `data_SART_summary`
-data_SART_summary <-  
+data_SART_summary <- data_SART %>%
+  filter(number == 5) %>%
+  mutate(subID = as.factor(subID)) %>%
+  group_by(subID) %>%
+  summarize(mean_RT = mean(RT, na.rm = TRUE),
+            SD_RT = sd(RT, na.rm = TRUE))
   
+data_SART_summary  
 
 ###### section 4
   
@@ -237,13 +236,29 @@ data_SART_summary <-
     
 # then, we are going to create a custom function
 # that sources files within the directory containing your R project file
-path <- function(x) find_root_file(x, criterion = has_file('R_week2.Rproj'))
+path <- function(x) find_root_file(x, criterion = has_file('03-R_part2.Rproj'))
 
 # (this is the syntax for defining a function; don't worry about it now,
 #  but just notice what the function is doing -- finding the location of the R project file)
 
 # now we can call our path() function whenever we are looking for a file
 fread(path('data/1_SART.csv'))
+path('data/1_SART.csv')
+
+# now i will introduce something to make this much simpler
+# R project files
+# go ahead and create a new R project file
+# and place it in the directory of your choice, 
+# but make sure the data files are in the same directory or one level below
+# name your R project file `R_part2.rproj`
+
+# i usually place my R project file in the "main" folder of a project
+# and then i have a lot of subfolders with data, scripts, stimuli, etc.
+# and the R project file is going to allow us to easily
+# reference files within that project
+
+# first, load the 'rprojroot' package we installed earlier
+# (do this in every script where you will use this command)
 
 # ...and we never need to set or change a working directory!
 # my recommendation is to place the R project file in the main directory of your project
@@ -252,5 +267,6 @@ fread(path('data/1_SART.csv'))
 # of that main directory
 library(rprojroot)
 path <- function(x) find_root_file(x, criterion = has_file('YOUR-PROJECT-NAME.Rproj'))
+
 
 
