@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>R part IV (review &amp; writing a script)</title>
+  <meta charset="utf-8">
+  <meta name="description" content="R part IV (review &amp; writing a script)">
+  <meta name="author" content="shelby bachman">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>R part IV (review &amp; writing a script)</h1>
+    <h2>RA tutorial week 5, summer 2019</h2>
+    <p>shelby bachman<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+.title-slide {
+  background-color: #bbbcce; /* #EDE0CF; ; #CA9F9D*/
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic
+}
+.title-slide hgroup > h1{
+  font-family: 'Oswald';
+}
+
+.title-slide hgroup > h2{
+  font-family: 'Oswald','Calibri';
+}
+slide:not(.segue) h2{
+  font-family: Trebuchet MS; /*, 'Oswald', sans-serif; */
+}
+</style>
+
+<h2>Overview</h2>
+
+<table><thead>
+<tr>
+<th>week</th>
+<th>topic</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>may 24</td>
+<td>literature search &amp; reference management</td>
+</tr>
+<tr>
+<td>may 31</td>
+<td>R part I: syntax &amp; data types</td>
+</tr>
+<tr>
+<td>jun 7</td>
+<td>R part II: data import &amp; cleaning with dplyr</td>
+</tr>
+<tr>
+<td>jun 14</td>
+<td>R part III: tidy data &amp; plotting with ggplot2</td>
+</tr>
+<tr>
+<td><strong>jun 21</strong></td>
+<td><strong>R part IV: review &amp; writing a script</strong></td>
+</tr>
+<tr>
+<td>jun 28</td>
+<td>how to read a scientific paper</td>
+</tr>
+<tr>
+<td>jul 5</td>
+<td>MATLAB part I: syntax, variables, data types</td>
+</tr>
+<tr>
+<td>jul 12</td>
+<td>MATLAB part II: data manipulation, scripts, &amp; functions</td>
+</tr>
+<tr>
+<td>jul 19</td>
+<td>MATLAB part III: building a basic experiment</td>
+</tr>
+<tr>
+<td>jul 26</td>
+<td>no tutorial</td>
+</tr>
+<tr>
+<td>aug 2</td>
+<td>MATLAB part IV: building a basic experiment (cont.)</td>
+</tr>
+<tr>
+<td>aug 9</td>
+<td>data lab: collecting some data in matlab</td>
+</tr>
+<tr>
+<td>aug 16</td>
+<td>data lab: tidying &amp; analyzing our collected data in R</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Today</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Writing a script</li>
+<li>Review of topics covered thus far:
+
+<ul>
+<li>Importing data</li>
+<li>Cleaning data with dplyr</li>
+<li>Tidying data with dplyr &amp; tidyr</li>
+<li>Plotting with ggplot2</li>
+<li>Basic statistical analyses</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>R Scripts</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>A <strong>script</strong> is a file that contains a set of commands. When the script is run, those commands are executed at once.</p>
+
+<p>In general, using scripts to write out series of commands is advantageous (as compared to just entering commands in the command window) so that you can keep track of your steps, reproduce sets of commands, and document your code.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Writing an R script</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Ingredients for writing a script:</p>
+
+<ul>
+<li>Header</li>
+<li>Comments</li>
+<li>Code</li>
+</ul>
+
+<p>Let&#39;s try writing a script. Open RStudio, select <code>File</code> --&gt; <code>New File</code> --&gt; <code>R Script</code> to open a new script. On the next slides, we will go through the ingredients of a well-designed R script.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Header</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The header of any script (in any programming language) should contain:</p>
+
+<ul>
+<li>a concise <strong>description</strong> of what the script does</li>
+<li><strong>who</strong> created the script</li>
+<li><strong>when</strong> the script was created</li>
+<li><strong>when</strong> it was last updated (if applicable)</li>
+</ul>
+
+<p><strong>In your script...</strong>
+Write a header for your script now, including these components.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Introductory material</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>In general, when you are creating a script in R you should do a few things at the beginning of each script, below the header:</p>
+
+<ul>
+<li>Clear your workspace (<code>rm(list = ls())</code>)</li>
+<li>Load relevant packages (<code>library(desiredPackage)</code>)</li>
+<li>Set your working directory</li>
+</ul>
+
+<p><img src="images/script_header.png?raw=true" alt=""></p>
+
+<p><strong>In your script...</strong>
+Add these steps to your script now. For today&#39;s script, please load the following packages: <code>data.table</code>, <code>tidyverse</code>. (Recall that loading <code>tidyverse</code> automatically loads the <code>dplyr</code>, <code>tidyr</code>, and <code>ggplot2</code> packages, among others.)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Using comments to explain your code</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>When writing code, it is important to use <strong>comments</strong> to give context and the reasoning for why you included certain commands and arguments to those commands.</p>
+
+<p><center>
+<em>code = what</em>
+<br>
+<em>comments = why</em>
+</center></p>
+
+<p>Recall that in R we use the <code>#</code> operator to delineate comments. <code># Example comment</code></p>
+
+<p><strong>In your script...</strong>
+Before I write a script, I use comments to create an <em>outline</em> of the major steps I want to accomplish with code in the script. Then, I fill in the code, and as I do so, I add more comments to elaborate on the purpose of each step.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Today&#39;s script</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>In the script we create today, we will load some data, get some basic information about the data, perform several manipulations of the data using <code>dplyr</code> functions, and then we will do some basic statistical analyses on the data and generate a few summary plots. </p>
+
+<p><strong>In your script...</strong>
+Using comments, create a rough outline of the major sections of your script that we will subseqeuently fill with code.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Part 1: Load the data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The data that we will use today is included as a zip file (LINK) on the tutorial website. Please download and unzip the data. <code>adult_data.csv</code> is the data we will load; <code>adult_data_info.csv</code> contains more information about the dataset and included variables, in case you are interested.</p>
+
+<p>In summary, the data we will work with today comes from the US census bureau database for the year 1996. The data contains demographic and financial information for many surveyed individuals.</p>
+
+<p><strong>In your script...</strong>
+In your script, use the <code>fread()</code> command to load the csv data, and store the resulting data as a dataframe called <code>adult_data</code>.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Part 2: Get an overview of the data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Next, add a few commands to get an overview of the data and answer these questions:</p>
+
+<ul>
+<li>How many observations are in the data?</li>
+<li>How many variables are in the data?</li>
+<li>What do the different variables mean? What are their classes?</li>
+<li>Are there any variables that need to be converted to a different class?</li>
+<li>Are there any variables with missing data (NAs or otherwise)?</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Part 2: Deal with missing values</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Notice that NAs have <em>not</em> been delineated with <code>NA</code> or <code>NaN</code> as we dealt with previously. Add several commands to deal with these missing values as follows:</p>
+
+<p>For each variable with missing values, replace the <code>?</code> values with <code>NA</code> values.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Part 3: Add new &amp; remove irrelevant variables</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Use <code>dplyr</code> functions to make the following changes to our dataframe:</p>
+
+<ul>
+<li>Remove the variables <code>fnlwgt</code>, <code>capital-gain</code>, <code>capital-loss</code>, and <code>hours-per-week</code> - we won&#39;t use those variables today</li>
+<li>Add a binary variable <code>income_binary</code> (factor, with values 1/0) indicating whether the person&#39;s income is &gt;50K (1) or &lt;= 50K (0)</li>
+<li>Convert the following variables to from character to factor variables: <code>workclass</code>, <code>education</code>, <code>marital-status</code>, <code>race</code>, and <code>sex</code></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Part 4: Does education affect income?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The first question we want to ask about our data is whether education has an effect on whether an individual&#39;s income is below or above $50K. To tackle this question:</p>
+
+<ul>
+<li>First, make sure that the data captures a wide range of education levels. Make a simple histogram of the <code>education_num</code> variable.</li>
+<li>Notice that the variable <code>education</code> is not so nicely coded. Instead, we will make our own variable based on the <code>education_num</code> variable to break the education levels into chunks. Use the <code>mutate()</code> function to create a new variable, <code>education-level</code>, which is either <code>less than HS</code>, <code>HS</code>, <code>some college</code>, <code>Bachelors or more</code></li>
+<li>Use the <code>summarize()</code> command to create a summary dataframe <code>summary_income_edu</code> that indicates the sum of the <code>income_binary</code> column for each education level.</li>
+<li>Create a simple barplot to visualize the summarized results.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Part 5: Does education differ by sex?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The next question we will examine is whether years of education differs by sex.</p>
+
+<ul>
+<li>First, use the <code>summarize()</code> command to create a summary dataframe <code>summary_edu_sex</code> that indicates the mean and standard deviation of years of education for each sex.</li>
+<li>Create a simple barplot to visualize the summarized results.</li>
+<li>Add error bars to the plot. Does it look like education differs significantly by sex?</li>
+<li>Perform a two-sample t-test to determine whether your intuition is correct.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Part 6a: What is the relationship between hours worked and chronological age?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The next question we will examine is how hours worked changes by age. We expect that hours worked per week should increase in the 20s and decrease towards older age.</p>
+
+<ul>
+<li>Create a scatterplot to visualize the relationship between <code>age</code> (x) and <code>hours_worked</code> (y).</li>
+<li>Make the plot points more transparent, and add loess curves.</li>
+<li>To determine whether there is a relationship between hours worked and chronological age, perform a Pearson correlation analysis separately for those individuals under 50 and for those over 50. Is there a significant relationship for either group?</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Part 6b: How does hours worked change by age?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>As our last exercise, we will review the option to <code>facet</code> plots by examining whether the relationship between hours worked and age is affected by sex and/or </p>
+
+<ul>
+<li>Create a scatterplot to visualize the relationship between <code>age</code> (x) and <code>hours_worked</code> (y). </li>
+<li>Color the points according to the <code>sex</code> variable, and facet the plot according to the <code>marital_status</code> variable.</li>
+<li>Make the plot points more transparent, and add loess curves.</li>
+<li>Draw some basic conclusions from the resulting plot.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Basic statistical analyses</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>mean(data, na.rm = TRUE)</code> : mean</li>
+<li><code>sd(data, na.rm = TRUE)</code> : standard deviation</li>
+<li><code>cor.test(x, y)</code>: correlation</li>
+<li><code>t.test(x, y)</code>: t-test</li>
+<li><code>chisq.test(x, y)</code>: chi-squared test</li>
+</ul>
+
+<p>Linear regression:
+<code>model &lt;- lm(y ~ x1 + x2 * x3, data = data)</code>
+<code>summary(model)</code></p>
+
+<p>ANOVA
+<code>model.aov &lt;- aov(y ~ x1 * x2 + Error(subID), data = data)</code>
+<code>summary(model.aov)</code></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Next week</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>How to read a scientific paper</li>
+<li>In 2 weeks, we will start learning MATLAB!</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Today'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='R Scripts'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Writing an R script'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Header'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Introductory material'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Using comments to explain your code'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Today&#39;s script'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Part 1: Load the data'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Part 2: Get an overview of the data'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Part 2: Deal with missing values'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Part 3: Add new &amp; remove irrelevant variables'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Part 4: Does education affect income?'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Part 5: Does education differ by sex?'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Part 6a: What is the relationship between hours worked and chronological age?'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Part 6b: How does hours worked change by age?'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Basic statistical analyses'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Next week'>
+         18
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
