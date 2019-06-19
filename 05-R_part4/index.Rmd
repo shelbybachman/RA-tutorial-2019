@@ -205,7 +205,7 @@ The next question we will examine is whether years of education differs by sex.
 
 --- .class #id
 
-## Part 6a: What is the relationship between hours worked and chronological age?
+## Part 6a: What is the relationship between weekly hours worked and chronological age?
 
 The next question we will examine is how hours worked changes by age. We expect that hours worked per week should increase in the 20s and decrease towards older age.
 
@@ -215,7 +215,7 @@ The next question we will examine is how hours worked changes by age. We expect 
 
 --- .class #id
 
-## Part 6b: How does hours worked change by age?
+## Part 6b: Is the age - hours worked relationship affected by sex or marital status?
 
 As our last exercise, we will review the option to `facet` plots by examining whether the relationship between hours worked and age is affected by sex and/or 
 
@@ -248,5 +248,5 @@ ANOVA
 
 **Topic**: How to read a scientific paper
 
-In 2 weeks, we will start learning MATLAB! If you don't have MATLAB installed already, please download it [here](https://www.mathworks.com/academia/tah-portal/university-of-southern-california-623588.html). (*Scroll down to "Sign In and Get Started".) You will need to log in with your USC credentials and create a MathWorks account. Email me if you have any problems with the download process!
+In 2 weeks, we will start learning MATLAB! If you don't already have MATLAB installed, please download it [here](https://www.mathworks.com/academia/tah-portal/university-of-southern-california-623588.html) (*scroll down to "Sign In and Get Started*). You will need to log in with your USC credentials and create a MathWorks account. Email me if you have any problems with the download process!
 
