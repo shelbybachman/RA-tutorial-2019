@@ -17,3 +17,8 @@
 [slides](https://shelbybachman.github.io/RA-tutorial-2019/04-R_part3/)
 <br>
 [script](https://raw.githubusercontent.com/shelbybachman/RA-tutorial-2019/master/04-R_part3/R_part3.R)
+
+## Week 5: R part IV (review & writing a script)
+[slides](https://shelbybachman.github.io/RA-tutorial-2019/05-R_part4/)
+<br>
+[data](https://github.com/shelbybachman/RA-tutorial-2019/raw/master/05-R_part4/data.zip)
