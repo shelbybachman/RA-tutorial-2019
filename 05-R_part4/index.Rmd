@@ -234,11 +234,11 @@ As our last exercise, we will review the option to `facet` plots by examining wh
 - `t.test(x, y) `: t-test
 - `chisq.test(x, y)`: chi-squared test
 
-Linear regression:
+Linear regression: <br>
 `model <- lm(y ~ x1 + x2 * x3, data = data)`
 `summary(model)`
 
-ANOVA
+ANOVA: <br>
 `model.aov <- aov(y ~ x1 * x2 + Error(subID), data = data)`
 `summary(model.aov)`
 
@@ -248,5 +248,5 @@ ANOVA
 
 **Topic**: How to read a scientific paper
 
-In 2 weeks, we will start learning MATLAB! If you don't already have MATLAB installed, please download it [here](https://www.mathworks.com/academia/tah-portal/university-of-southern-california-623588.html) (*scroll down to "Sign In and Get Started*). You will need to log in with your USC credentials and create a MathWorks account. Email me if you have any problems with the download process!
+In 2 weeks, we will start learning MATLAB! If you don't already have MATLAB installed, please download it [here](https://www.mathworks.com/academia/tah-portal/university-of-southern-california-623588.html) (*scroll down to "Sign In and Get Started"*). You will need to log in with your USC credentials and create a MathWorks account. Email me if you have any problems with the download process!
 
