@@ -141,7 +141,7 @@ Using comments, create a rough outline of the major sections of your script that
 
 ## Part 1: Load the data
 
-The data that we will use today is included as a zip file (LINK) on the tutorial website. Please download and unzip the data. `adult_data.csv` is the data we will load; `adult_data_info.csv` contains more information about the dataset and included variables, in case you are interested.
+The data that we will use today is included as a zip file on the tutorial website. Please download and unzip the file; you will find two `.csv` files included. `adult_data.csv` is the data we will load; `adult_data_info.csv` contains more information about the dataset and included variables, in case you are interested.
 
 In summary, the data we will work with today comes from the US census bureau database for the year 1996. The data contains demographic and financial information for many surveyed individuals.
 
@@ -172,7 +172,7 @@ For each variable with missing values, replace the `?` values with `NA` values.
 ## Part 3: Add new & remove irrelevant variables
 
 Use `dplyr` functions to make the following changes to our dataframe:
-- Remove the variables `fnlwgt`, `capital-gain`, `capital-loss`, and `hours-per-week` - we won't use those variables today
+- Remove the variables `fnlwgt`, `capital_gain`, `capital_loss`, and `hours_per_week` - we won't use those variables today
 - Add a binary variable `income_binary` (factor, with values 1/0) indicating whether the person's income is >50K (1) or <= 50K (0)
 - Convert the following variables to from character to factor variables: `workclass`, `education`, `marital-status`, `race`, and `sex`
 
@@ -204,7 +204,7 @@ The next question we will examine is whether years of education differs by sex.
 
 The next question we will examine is how hours worked changes by age. We expect that hours worked per week should increase in the 20s and decrease towards older age.
 
-- Create a scatterplot to visualize the relationship between `age` (x) and `hours_worked` (y).
+- Create a scatterplot to visualize the relationship between `age` (x) and `hours_per_week` (y).
 - Make the plot points more transparent, and add loess curves.
 - To determine whether there is a relationship between hours worked and chronological age, perform a Pearson correlation analysis separately for those individuals under 50 and for those over 50. Is there a significant relationship for either group?
 
@@ -214,7 +214,7 @@ The next question we will examine is how hours worked changes by age. We expect 
 
 As our last exercise, we will review the option to `facet` plots by examining whether the relationship between hours worked and age is affected by sex and/or 
 
-- Create a scatterplot to visualize the relationship between `age` (x) and `hours_worked` (y). 
+- Create a scatterplot to visualize the relationship between `age` (x) and `hours_per_week` (y). 
 - Color the points according to the `sex` variable, and facet the plot according to the `marital_status` variable.
 - Make the plot points more transparent, and add loess curves.
 - Draw some basic conclusions from the resulting plot.
@@ -241,6 +241,7 @@ ANOVA
 
 ## Next week
 
-- How to read a scientific paper
-- In 2 weeks, we will start learning MATLAB!
+**Topic**: How to read a scientific paper
+
+In 2 weeks, we will start learning MATLAB! If you don't have MATLAB installed already, please download it [here](https://www.mathworks.com/academia/tah-portal/university-of-southern-california-623588.html). (*Scroll down to "Sign In and Get Started".) You will need to log in with your USC credentials and create a MathWorks account. Email me if you have any problems with the download process!
 

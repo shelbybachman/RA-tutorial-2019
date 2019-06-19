@@ -269,7 +269,7 @@ Using comments, create a rough outline of the major sections of your script that
     <h2>Part 1: Load the data</h2>
   </hgroup>
   <article data-timings="">
-    <p>The data that we will use today is included as a zip file (LINK) on the tutorial website. Please download and unzip the data. <code>adult_data.csv</code> is the data we will load; <code>adult_data_info.csv</code> contains more information about the dataset and included variables, in case you are interested.</p>
+    <p>The data that we will use today is included as a zip file on the tutorial website. Please download and unzip the file; you will find two <code>.csv</code> files included. <code>adult_data.csv</code> is the data we will load; <code>adult_data_info.csv</code> contains more information about the dataset and included variables, in case you are interested.</p>
 
 <p>In summary, the data we will work with today comes from the US census bureau database for the year 1996. The data contains demographic and financial information for many surveyed individuals.</p>
 
@@ -320,7 +320,7 @@ In your script, use the <code>fread()</code> command to load the csv data, and s
     <p>Use <code>dplyr</code> functions to make the following changes to our dataframe:</p>
 
 <ul>
-<li>Remove the variables <code>fnlwgt</code>, <code>capital-gain</code>, <code>capital-loss</code>, and <code>hours-per-week</code> - we won&#39;t use those variables today</li>
+<li>Remove the variables <code>fnlwgt</code>, <code>capital_gain</code>, <code>capital_loss</code>, and <code>hours_per_week</code> - we won&#39;t use those variables today</li>
 <li>Add a binary variable <code>income_binary</code> (factor, with values 1/0) indicating whether the person&#39;s income is &gt;50K (1) or &lt;= 50K (0)</li>
 <li>Convert the following variables to from character to factor variables: <code>workclass</code>, <code>education</code>, <code>marital-status</code>, <code>race</code>, and <code>sex</code></li>
 </ul>
@@ -373,7 +373,7 @@ In your script, use the <code>fread()</code> command to load the csv data, and s
     <p>The next question we will examine is how hours worked changes by age. We expect that hours worked per week should increase in the 20s and decrease towards older age.</p>
 
 <ul>
-<li>Create a scatterplot to visualize the relationship between <code>age</code> (x) and <code>hours_worked</code> (y).</li>
+<li>Create a scatterplot to visualize the relationship between <code>age</code> (x) and <code>hours_per_week</code> (y).</li>
 <li>Make the plot points more transparent, and add loess curves.</li>
 <li>To determine whether there is a relationship between hours worked and chronological age, perform a Pearson correlation analysis separately for those individuals under 50 and for those over 50. Is there a significant relationship for either group?</li>
 </ul>
@@ -390,7 +390,7 @@ In your script, use the <code>fread()</code> command to load the csv data, and s
     <p>As our last exercise, we will review the option to <code>facet</code> plots by examining whether the relationship between hours worked and age is affected by sex and/or </p>
 
 <ul>
-<li>Create a scatterplot to visualize the relationship between <code>age</code> (x) and <code>hours_worked</code> (y). </li>
+<li>Create a scatterplot to visualize the relationship between <code>age</code> (x) and <code>hours_per_week</code> (y). </li>
 <li>Color the points according to the <code>sex</code> variable, and facet the plot according to the <code>marital_status</code> variable.</li>
 <li>Make the plot points more transparent, and add loess curves.</li>
 <li>Draw some basic conclusions from the resulting plot.</li>
@@ -430,10 +430,9 @@ In your script, use the <code>fread()</code> command to load the csv data, and s
     <h2>Next week</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>How to read a scientific paper</li>
-<li>In 2 weeks, we will start learning MATLAB!</li>
-</ul>
+    <p><strong>Topic</strong>: How to read a scientific paper</p>
+
+<p>In 2 weeks, we will start learning MATLAB! If you don&#39;t have MATLAB installed already, please download it <a href="https://www.mathworks.com/academia/tah-portal/university-of-southern-california-623588.html">here</a>. (*Scroll down to &quot;Sign In and Get Started&quot;.) You will need to log in with your USC credentials and create a MathWorks account. Email me if you have any problems with the download process!</p>
 
   </article>
   <!-- Presenter Notes -->
