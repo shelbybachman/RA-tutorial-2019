@@ -16,7 +16,8 @@ library(rprojroot)
 wd <- "/Users/shelbybachman/Documents/Mather_Lab/RA-tutorial-2019/05-R_part4/data"
 setwd(wd)
 
-# create function to source files within this project
+# create function to source files within this project (if using an R project file)
+# this is an alternative to setting your working directory
 path <- function(x) find_root_file(x, criterion = has_file('05-R_part4.Rproj'))
 
 ######## section 1: load data

@@ -99,6 +99,8 @@ The header of any script (in any programming language) should contain:
 - **when** the script was created
 - **when** it was last updated (if applicable)
 
+![](images/script_header.png?raw=true)
+
 **In your script...**
 Write a header for your script now, including these components.
 
@@ -110,8 +112,6 @@ In general, when you are creating a script in R you should do a few things at th
 - Clear your workspace (`rm(list = ls())`)
 - Load relevant packages (`library(desiredPackage)`)
 - Set your working directory
-
-![](images/script_header.png?raw=true)
 
 **In your script...**
 Add these steps to your script now. For today's script, please load the following packages: `data.table`, `tidyverse`. (Recall that loading `tidyverse` automatically loads the `dplyr`, `tidyr`, and `ggplot2` packages, among others.)
