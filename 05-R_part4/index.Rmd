@@ -49,8 +49,8 @@ may 31    | R part I: syntax & data types
 jun 7     | R part II: data import & cleaning with dplyr
 jun 14    | R part III: tidy data & plotting with ggplot2
 **jun 21**    | **R part IV: review & writing a script**
-jun 28    | how to read a scientific paper
-jul 5     | MATLAB part I: syntax, variables, data types
+jun 28    | MATLAB part I: syntax, variables, data types
+jul 5     | no tutorial
 jul 12    | MATLAB part II: data manipulation, scripts, & functions
 jul 19    | MATLAB part III: building a basic experiment
 jul 26    | no tutorial
@@ -247,7 +247,7 @@ ANOVA: <br>
 
 ## Next week
 
-**Topic**: How to read a scientific paper
+**Topic**: MATLAB part I (syntax, variables, and data types)
 
-<!-- In 2 weeks, we will start learning MATLAB! If you don't already have MATLAB installed, please download it [here](https://www.mathworks.com/academia/tah-portal/university-of-southern-california-623588.html) (*scroll down to "Sign In and Get Started"*). You will need to log in with your USC credentials and create a MathWorks account. Email me if you have any problems with the download process! -->
+<!-- If you don't already have MATLAB installed, please download it [here](https://www.mathworks.com/academia/tah-portal/university-of-southern-california-623588.html) (*scroll down to "Sign In and Get Started"*). You will need to log in with your USC credentials and create a MathWorks account. Email me if you have any problems with the download process! -->
 

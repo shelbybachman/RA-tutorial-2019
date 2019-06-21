@@ -44,8 +44,8 @@ may 31    | R part I: syntax & data types
 jun 7     | R part II: data import & cleaning with dplyr
 jun 14    | R part III: tidy data & plotting with ggplot2
 **jun 21**    | **R part IV: review & writing a script**
-jun 28    | how to read a scientific paper
-jul 5     | MATLAB part I: syntax, variables, data types
+jun 28    | MATLAB part I: syntax, variables, data types
+jul 5     | no tutorial
 jul 12    | MATLAB part II: data manipulation, scripts, & functions
 jul 19    | MATLAB part III: building a basic experiment
 jul 26    | no tutorial
@@ -161,7 +161,7 @@ Next, add a few commands to get an overview of the data and answer these questio
 
 --- .class #id
 
-## Part 2: Deal with missing values
+## Part 3: Deal with missing values
 
 Notice that NAs have *not* been delineated with `NA` or `NaN` as we dealt with previously. Add several commands to deal with these missing values as follows:
 
@@ -169,7 +169,7 @@ For each variable with missing values, replace the `?` values with `NA` values.
 
 --- .class #id
 
-## Part 3: Add new & remove irrelevant variables
+## Part 4: Add new & remove irrelevant variables
 
 Use `dplyr` functions to make the following changes to our dataframe:
 - Remove the variables `fnlwgt`, `capital_gain`, `capital_loss`, and `hours_per_week` - we won't use those variables today
@@ -178,18 +178,18 @@ Use `dplyr` functions to make the following changes to our dataframe:
 
 --- .class #id
 
-## Part 4: Does education affect income?
+## Part 5: Does education affect income?
 
 The first question we want to ask about our data is whether education has an effect on whether an individual's income is below or above $50K. To tackle this question:
 
 - First, make sure that the data captures a wide range of education levels. Make a simple histogram of the `education_num` variable.
-- Notice that the variable `education` is not so nicely coded. Instead, we will make our own variable based on the `education_num` variable to break the education levels into chunks. Use the `mutate()` function to create a new variable, `education-level`, which is either `less than HS`, `HS`, `some college`, `Bachelors or more`
+- Notice that the variable `education` is not so nicely coded. Instead, we will make our own variable based on the `education_num` variable to break the education levels into chunks. Use the `mutate()` function to create a new variable, `education_level`, which is either `1 (grade school)`, `2 (less than HS)`, `3 (high school)`, `4 (college)`
 - Use the `summarize()` command to create a summary dataframe `summary_income_edu` that indicates the sum of the `income_binary` column for each education level.
 - Create a simple barplot to visualize the summarized results.
 
 --- .class #id
 
-## Part 5: Does education differ by sex?
+## Part 6: Does education differ by sex?
 
 The next question we will examine is whether years of education differs by sex.
 
@@ -200,23 +200,24 @@ The next question we will examine is whether years of education differs by sex.
 
 --- .class #id
 
-## Part 6a: What is the relationship between weekly hours worked and chronological age?
+## Part 7a: What is the relationship between weekly hours worked and chronological age?
 
 The next question we will examine is how hours worked changes by age. We expect that hours worked per week should increase in the 20s and decrease towards older age.
 
 - Create a scatterplot to visualize the relationship between `age` (x) and `hours_per_week` (y).
-- Make the plot points more transparent, and add loess curves.
+- Make the plot points more transparent, and add a loess curve through the data.
 - To determine whether there is a relationship between hours worked and chronological age, perform a Pearson correlation analysis separately for those individuals under 50 and for those over 50. Is there a significant relationship for either group?
 
 --- .class #id
 
-## Part 6b: Is the age - hours worked relationship affected by sex or marital status?
+## Part 7b: Is the age - hours worked relationship affected by sex or marital status?
 
 As our last exercise, we will review the option to `facet` plots by examining whether the relationship between hours worked and age is affected by sex and/or 
 
 - Create a scatterplot to visualize the relationship between `age` (x) and `hours_per_week` (y). 
 - Color the points according to the `sex` variable, and facet the plot according to the `marital_status` variable.
 - Make the plot points more transparent, and add loess curves.
+- Create another version of the plot with a new color scheme and a theme.
 - Draw some basic conclusions from the resulting plot.
 
 --- .class #id
@@ -241,7 +242,7 @@ ANOVA: <br>
 
 ## Next week
 
-**Topic**: How to read a scientific paper
+**Topic**: MATLAB part I (syntax, variables, and data types)
 
-In 2 weeks, we will start learning MATLAB! If you don't already have MATLAB installed, please download it [here](https://www.mathworks.com/academia/tah-portal/university-of-southern-california-623588.html) (*scroll down to "Sign In and Get Started"*). You will need to log in with your USC credentials and create a MathWorks account. Email me if you have any problems with the download process!
+<!-- If you don't already have MATLAB installed, please download it [here](https://www.mathworks.com/academia/tah-portal/university-of-southern-california-623588.html) (*scroll down to "Sign In and Get Started"*). You will need to log in with your USC credentials and create a MathWorks account. Email me if you have any problems with the download process! -->
 

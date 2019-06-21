@@ -95,11 +95,11 @@ slide:not(.segue) h2{
 </tr>
 <tr>
 <td>jun 28</td>
-<td>how to read a scientific paper</td>
+<td>MATLAB part I: syntax, variables, data types</td>
 </tr>
 <tr>
 <td>jul 5</td>
-<td>MATLAB part I: syntax, variables, data types</td>
+<td>no tutorial</td>
 </tr>
 <tr>
 <td>jul 12</td>
@@ -301,7 +301,7 @@ In your script, use the <code>fread()</code> command to load the csv data, and s
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Part 2: Deal with missing values</h2>
+    <h2>Part 3: Deal with missing values</h2>
   </hgroup>
   <article data-timings="">
     <p>Notice that NAs have <em>not</em> been delineated with <code>NA</code> or <code>NaN</code> as we dealt with previously. Add several commands to deal with these missing values as follows:</p>
@@ -314,7 +314,7 @@ In your script, use the <code>fread()</code> command to load the csv data, and s
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Part 3: Add new &amp; remove irrelevant variables</h2>
+    <h2>Part 4: Add new &amp; remove irrelevant variables</h2>
   </hgroup>
   <article data-timings="">
     <p>Use <code>dplyr</code> functions to make the following changes to our dataframe:</p>
@@ -331,14 +331,14 @@ In your script, use the <code>fread()</code> command to load the csv data, and s
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Part 4: Does education affect income?</h2>
+    <h2>Part 5: Does education affect income?</h2>
   </hgroup>
   <article data-timings="">
     <p>The first question we want to ask about our data is whether education has an effect on whether an individual&#39;s income is below or above $50K. To tackle this question:</p>
 
 <ul>
 <li>First, make sure that the data captures a wide range of education levels. Make a simple histogram of the <code>education_num</code> variable.</li>
-<li>Notice that the variable <code>education</code> is not so nicely coded. Instead, we will make our own variable based on the <code>education_num</code> variable to break the education levels into chunks. Use the <code>mutate()</code> function to create a new variable, <code>education-level</code>, which is either <code>less than HS</code>, <code>HS</code>, <code>some college</code>, <code>Bachelors or more</code></li>
+<li>Notice that the variable <code>education</code> is not so nicely coded. Instead, we will make our own variable based on the <code>education_num</code> variable to break the education levels into chunks. Use the <code>mutate()</code> function to create a new variable, <code>education_level</code>, which is either <code>1 (grade school)</code>, <code>2 (less than HS)</code>, <code>3 (high school)</code>, <code>4 (college)</code></li>
 <li>Use the <code>summarize()</code> command to create a summary dataframe <code>summary_income_edu</code> that indicates the sum of the <code>income_binary</code> column for each education level.</li>
 <li>Create a simple barplot to visualize the summarized results.</li>
 </ul>
@@ -349,7 +349,7 @@ In your script, use the <code>fread()</code> command to load the csv data, and s
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Part 5: Does education differ by sex?</h2>
+    <h2>Part 6: Does education differ by sex?</h2>
   </hgroup>
   <article data-timings="">
     <p>The next question we will examine is whether years of education differs by sex.</p>
@@ -367,14 +367,14 @@ In your script, use the <code>fread()</code> command to load the csv data, and s
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Part 6a: What is the relationship between weekly hours worked and chronological age?</h2>
+    <h2>Part 7a: What is the relationship between weekly hours worked and chronological age?</h2>
   </hgroup>
   <article data-timings="">
     <p>The next question we will examine is how hours worked changes by age. We expect that hours worked per week should increase in the 20s and decrease towards older age.</p>
 
 <ul>
 <li>Create a scatterplot to visualize the relationship between <code>age</code> (x) and <code>hours_per_week</code> (y).</li>
-<li>Make the plot points more transparent, and add loess curves.</li>
+<li>Make the plot points more transparent, and add a loess curve through the data.</li>
 <li>To determine whether there is a relationship between hours worked and chronological age, perform a Pearson correlation analysis separately for those individuals under 50 and for those over 50. Is there a significant relationship for either group?</li>
 </ul>
 
@@ -384,7 +384,7 @@ In your script, use the <code>fread()</code> command to load the csv data, and s
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Part 6b: Is the age - hours worked relationship affected by sex or marital status?</h2>
+    <h2>Part 7b: Is the age - hours worked relationship affected by sex or marital status?</h2>
   </hgroup>
   <article data-timings="">
     <p>As our last exercise, we will review the option to <code>facet</code> plots by examining whether the relationship between hours worked and age is affected by sex and/or </p>
@@ -393,6 +393,7 @@ In your script, use the <code>fread()</code> command to load the csv data, and s
 <li>Create a scatterplot to visualize the relationship between <code>age</code> (x) and <code>hours_per_week</code> (y). </li>
 <li>Color the points according to the <code>sex</code> variable, and facet the plot according to the <code>marital_status</code> variable.</li>
 <li>Make the plot points more transparent, and add loess curves.</li>
+<li>Create another version of the plot with a new color scheme and a theme.</li>
 <li>Draw some basic conclusions from the resulting plot.</li>
 </ul>
 
@@ -430,9 +431,9 @@ In your script, use the <code>fread()</code> command to load the csv data, and s
     <h2>Next week</h2>
   </hgroup>
   <article data-timings="">
-    <p><strong>Topic</strong>: How to read a scientific paper</p>
+    <p><strong>Topic</strong>: MATLAB part I (syntax, variables, and data types)</p>
 
-<p>In 2 weeks, we will start learning MATLAB! If you don&#39;t already have MATLAB installed, please download it <a href="https://www.mathworks.com/academia/tah-portal/university-of-southern-california-623588.html">here</a> (<em>scroll down to &quot;Sign In and Get Started&quot;</em>). You will need to log in with your USC credentials and create a MathWorks account. Email me if you have any problems with the download process!</p>
+<!-- If you don't already have MATLAB installed, please download it [here](https://www.mathworks.com/academia/tah-portal/university-of-southern-california-623588.html) (*scroll down to "Sign In and Get Started"*). You will need to log in with your USC credentials and create a MathWorks account. Email me if you have any problems with the download process! -->
 
   </article>
   <!-- Presenter Notes -->
@@ -504,37 +505,37 @@ In your script, use the <code>fread()</code> command to load the csv data, and s
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='Part 2: Deal with missing values'>
+        data-slide=11 title='Part 3: Deal with missing values'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Part 3: Add new &amp; remove irrelevant variables'>
+        data-slide=12 title='Part 4: Add new &amp; remove irrelevant variables'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Part 4: Does education affect income?'>
+        data-slide=13 title='Part 5: Does education affect income?'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Part 5: Does education differ by sex?'>
+        data-slide=14 title='Part 6: Does education differ by sex?'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Part 6a: What is the relationship between weekly hours worked and chronological age?'>
+        data-slide=15 title='Part 7a: What is the relationship between weekly hours worked and chronological age?'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='Part 6b: Is the age - hours worked relationship affected by sex or marital status?'>
+        data-slide=16 title='Part 7b: Is the age - hours worked relationship affected by sex or marital status?'>
          16
       </a>
     </li>
