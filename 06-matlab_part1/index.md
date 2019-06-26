@@ -1,5 +1,5 @@
 ---
-title       : MATLAB part I (syntax & data types)
+title       : MATLAB part I (syntax, data types & operations)
 subtitle    : RA tutorial week 6, summer 2019
 author      : shelby bachman
 job         : 
@@ -42,7 +42,7 @@ may 31    | R part I: syntax & data types
 jun 7     | R part II: data import & cleaning with dplyr
 jun 14    | R part III: tidy data & plotting with ggplot2
 jun 21    | R part IV: review & writing a script
-**jun 27**    | **MATLAB part I: syntax & data types**
+**jun 27**    | **MATLAB part I: syntax, data types & operations**
 jul 5     | no tutorial
 jul 12    | MATLAB part II: loops, scripts & functions
 jul 19    | MATLAB part III: building a basic experiment
