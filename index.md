@@ -24,3 +24,8 @@
 [script](https://raw.githubusercontent.com/shelbybachman/RA-tutorial-2019/master/05-R_part4/R_part4.R)
 <br>
 [data](https://github.com/shelbybachman/RA-tutorial-2019/raw/master/05-R_part4/data.zip)
+
+## Week 6: MATLAB part I (syntax, data types & operations)
+[slides](https://shelbybachman.github.io/RA-tutorial-2019/06-matlab_part1/)
+<br>
+[script](https://raw.githubusercontent.com/shelbybachman/RA-tutorial-2019/master/06-matlab_part1/matlab_part1.m)
