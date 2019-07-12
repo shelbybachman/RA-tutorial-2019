@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MATLAB part II (control flow, scripts &amp; functions)</title>
+  <meta charset="utf-8">
+  <meta name="description" content="MATLAB part II (control flow, scripts &amp; functions)">
+  <meta name="author" content="shelby bachman">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>MATLAB part II (control flow, scripts &amp; functions)</h1>
+    <h2>RA tutorial week 7, summer 2019</h2>
+    <p>shelby bachman<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+.title-slide {
+  background-color: #bbbcce; /* #EDE0CF; ; #CA9F9D*/
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic
+}
+.title-slide hgroup > h1{
+  font-family: 'Oswald';
+}
+
+.title-slide hgroup > h2{
+  font-family: 'Oswald','Calibri';
+}
+slide:not(.segue) h2{
+  font-family: Trebuchet MS; /*, 'Oswald', sans-serif; */
+}
+</style>
+
+<h2>Overview</h2>
+
+<table><thead>
+<tr>
+<th>week</th>
+<th>topic</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>may 24</td>
+<td>literature search &amp; reference management</td>
+</tr>
+<tr>
+<td>may 31</td>
+<td>R part I: syntax &amp; data types</td>
+</tr>
+<tr>
+<td>jun 7</td>
+<td>R part II: data import &amp; cleaning with dplyr</td>
+</tr>
+<tr>
+<td>jun 14</td>
+<td>R part III: tidy data &amp; plotting with ggplot2</td>
+</tr>
+<tr>
+<td>jun 21</td>
+<td>R part IV: review &amp; writing a script</td>
+</tr>
+<tr>
+<td>jun 27</td>
+<td>MATLAB part I: syntax, data types &amp; operations</td>
+</tr>
+<tr>
+<td>jul 5</td>
+<td>no tutorial</td>
+</tr>
+<tr>
+<td><strong>jul 12</strong></td>
+<td><strong>MATLAB part II: control flow, scripts &amp; functions</strong></td>
+</tr>
+<tr>
+<td>jul 19</td>
+<td>MATLAB part III: building a basic experiment in Psychtoolbox</td>
+</tr>
+<tr>
+<td>jul 26</td>
+<td>no tutorial</td>
+</tr>
+<tr>
+<td>aug 2</td>
+<td>MATLAB part IV: building a basic experiment in Psychtoolbox (cont.)</td>
+</tr>
+<tr>
+<td>aug 9</td>
+<td>data lab: collecting some data using matlab &amp; Psychtoolbox</td>
+</tr>
+<tr>
+<td>aug 16</td>
+<td>data lab: tidying &amp; analyzing our collected data in R</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Today</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Control flow 
+
+<ul>
+<li><strong>for</strong> loops</li>
+<li><strong>if</strong> statements</li>
+<li><strong>switch/case</strong> statements</li>
+<li><strong>while</strong> statements</li>
+</ul></li>
+<li>Scripts
+
+<ul>
+<li>Writing &amp; running a basic script</li>
+</ul></li>
+<li>Functions
+
+<ul>
+<li>Scripts vs. functions</li>
+<li>Local vs. global variables</li>
+<li>Writing &amp; executing a basic function</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Control flow: for loops</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We use for loops to iterate over something with multiple element (e.g. vector, array) and peform an action(s) during each iteration.</p>
+
+<pre><code>for each_element in my_vector
+    do something to this element
+end
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Control flow: if statements</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We use if statements to evaluate one or more conditional statements and perform different action(s) based on the different conditions.</p>
+
+<pre><code>if condition 1 is true
+    do action 1
+elseif condition 2 is true
+    do action 2
+else
+    do action 3
+end
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Control flow: switch/case statements</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We use switch/case statements for the same purpose as if statements, but these are useful when we have many possible conditions to evaluate.</p>
+
+<pre><code>switch condition_of_interest
+case condition_is_1
+    do action 1
+case condition_is_2
+    do action 2
+case condition_is_3
+    do action 3
+case condition_is_4
+    do action 4
+case condition_is_5
+    do action 5
+end
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Control flow: while statements</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We use while statements to execute an action(s) only while a certain condition is met.</p>
+
+<pre><code>while condition_is_true
+  do something
+    %(at some point, condition becomes false, and loop ends)
+end
+</code></pre>
+
+<p>Let&#39;s try writing the loops and statements we&#39;ve reviewed in MATLAB. Open the script for this week&#39;s lesson in MATLAB.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Scripts &amp; functions</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>Scripts</strong> are files containing a set of commands. When we save a script file, we can run the script and execute all the commands in that file.</p>
+
+<p><strong>Functions</strong> are more flexible versions of scripts. They include commands that are performed on a set of input and output variables. Like scripts, they are also saved as files. (Note: you can save functions within scripts but I don&#39;t recommend getting in the habit of this.)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Scripts &amp; functions: example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><em>Example</em>: We create a short script that calculates the area of a circle:</p>
+
+<pre><code>radius = 3;
+area = 2 * pi * radius
+</code></pre>
+
+<p>If we ran this script, we would find that <code>radius</code> would be set to 3 and <code>area</code> to 18.85 in our workspace. But what if we wanted to easily modify the value of <code>radius</code>, to test the effect of different values on the resulting <code>area</code> value? This is where functions come in handy. We could define a function <code>circle_area</code> that computes the area of a circle with given radius, as follows:</p>
+
+<pre><code>[area] = function circle_area(radius)
+    area = 2 * pi * radius;
+end
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Scripts &amp; functions: example (continued)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Then, we could run the function as follows, changing the input value of <code>radius</code> as we wish:</p>
+
+<pre><code>area = circle_area(3)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Global vs. local variables</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Each function has its won <strong>local</strong> variables</li>
+<li>If we want variables in our workspace to be &quot;seen&quot; by a function, we must declare those variables as <strong>global</strong></li>
+</ul>
+
+<p><em>Example</em>: below, we create a function that takes a numeric input and adds the number 5 to that input. We save this function as a file <code>my_function.m</code>.</p>
+
+<pre><code>[output] = function my_function(input)
+    x = 5;
+    output = x + input;
+end
+</code></pre>
+
+<p>If we then run this function as <code>my_function(3)</code> we should get <code>output = 8</code>.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Global vs. local variables (continued)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>What if we have a variable <code>x</code> in our workspace? Importantly, this won&#39;t affect the output of our function, because <code>x</code> as defined in our function is <em>local</em> to that function, separate from the <code>x</code> that exists in our workspace.</p>
+
+<p>Perhaps, though, we would like to make the <code>x</code> variable a <em>global</em> variable, such that we wouldn&#39;t need to specify it as an input to our function. We could recreate our function <code>my_function.m</code> as follows (see next slide)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Global and local variables (continued)</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>[output] = function my_function(input)
+    output = x + input;
+end
+</code></pre>
+
+<p>Then, we could use the following code to define <code>x</code> and make it <em>global</em>:</p>
+
+<pre><code>x = 5;
+global x
+</code></pre>
+
+<p class='..and'>we would get the same behavior of the function as we saw originally if we ran <code>output = my_function(3)</code>.</p>
+
+<p>Take home: be aware that variables created within your functions are <em>not</em> seen by your workspace, unless they are included as an output of the function. Now, let&#39;s try creating a script and function of our own. Return to this week&#39;s MATLAB script.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Next week</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>Topic</strong>: MATLAB part III (building a basic experiment in Psychtoolbox)</p>
+
+<p>We will install Psychtoolbox together at the beginning of next week&#39;s session.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Today'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Control flow: for loops'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Control flow: if statements'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Control flow: switch/case statements'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Control flow: while statements'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Scripts &amp; functions'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Scripts &amp; functions: example'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Scripts &amp; functions: example (continued)'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Global vs. local variables'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Global vs. local variables (continued)'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Global and local variables (continued)'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Next week'>
+         13
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
