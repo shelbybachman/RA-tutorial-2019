@@ -29,3 +29,8 @@
 [slides](https://shelbybachman.github.io/RA-tutorial-2019/06-matlab_part1/)
 <br>
 [script](https://raw.githubusercontent.com/shelbybachman/RA-tutorial-2019/master/06-matlab_part1/matlab_part1.m)
+
+## Week 7: MATLAB part II (control flow, scripts & functions)
+[slides](https://shelbybachman.github.io/RA-tutorial-2019/07-matlab_part2/)
+<br>
+[script](https://raw.githubusercontent.com/shelbybachman/RA-tutorial-2019/master/07-matlab_part2/matlab_part2.m)
