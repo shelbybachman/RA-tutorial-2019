@@ -139,16 +139,16 @@ Let's try writing the loops and statements we've reviewed in MATLAB. Open the sc
 
 ## Scripts & functions: example
 
-*Example*: We create a short script that calculates the area of a circle:
+*Example*: We create a short script that calculates the circumference of a circle:
 ```
 radius = 3;
-area = 2 * pi * radius
+circumference = 2 * pi * radius
 ```
 
-If we ran this script, we would find that `radius` would be set to 3 and `area` to 18.85 in our workspace. But what if we wanted to easily modify the value of `radius`, to test the effect of different values on the resulting `area` value? This is where functions come in handy. We could define a function `circle_area` that computes the area of a circle with given radius, as follows:
+If we ran this script, we would find that `radius` would be set to 3 and `circumference` to 18.85 in our workspace. But what if we wanted to easily modify the value of `radius`, to test the effect of different values on the resulting `circumference` value? This is where functions come in handy. We could define a function `find_circumference` that computes the circumference of a circle with given radius, as follows:
 ```
-[area] = function circle_area(radius)
-    area = 2 * pi * radius;
+[circumference] = function find_circumference(radius)
+    circumference = 2 * pi * radius;
 end
 ```
 
@@ -158,7 +158,13 @@ end
 
 Then, we could run the function as follows, changing the input value of `radius` as we wish:
 ```
-area = circle_area(3)
+circumference = find_circumference(3);
+circumference
+18.84956
+
+circumference = find_circumference(5);
+circumference
+31.42
 ```
 
 --- .class #id

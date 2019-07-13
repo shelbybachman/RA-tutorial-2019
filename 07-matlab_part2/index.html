@@ -261,16 +261,16 @@ end
     <h2>Scripts &amp; functions: example</h2>
   </hgroup>
   <article data-timings="">
-    <p><em>Example</em>: We create a short script that calculates the area of a circle:</p>
+    <p><em>Example</em>: We create a short script that calculates the circumference of a circle:</p>
 
 <pre><code>radius = 3;
-area = 2 * pi * radius
+circumference = 2 * pi * radius
 </code></pre>
 
-<p>If we ran this script, we would find that <code>radius</code> would be set to 3 and <code>area</code> to 18.85 in our workspace. But what if we wanted to easily modify the value of <code>radius</code>, to test the effect of different values on the resulting <code>area</code> value? This is where functions come in handy. We could define a function <code>circle_area</code> that computes the area of a circle with given radius, as follows:</p>
+<p>If we ran this script, we would find that <code>radius</code> would be set to 3 and <code>circumference</code> to 18.85 in our workspace. But what if we wanted to easily modify the value of <code>radius</code>, to test the effect of different values on the resulting <code>circumference</code> value? This is where functions come in handy. We could define a function <code>find_circumference</code> that computes the circumference of a circle with given radius, as follows:</p>
 
-<pre><code>[area] = function circle_area(radius)
-    area = 2 * pi * radius;
+<pre><code>[circumference] = function find_circumference(radius)
+    circumference = 2 * pi * radius;
 end
 </code></pre>
 
@@ -285,7 +285,13 @@ end
   <article data-timings="">
     <p>Then, we could run the function as follows, changing the input value of <code>radius</code> as we wish:</p>
 
-<pre><code>area = circle_area(3)
+<pre><code>circumference = find_circumference(3);
+circumference
+18.84956
+
+circumference = find_circumference(5);
+circumference
+31.42
 </code></pre>
 
   </article>
