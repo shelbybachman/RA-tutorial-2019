@@ -36,3 +36,8 @@
 [script](https://raw.githubusercontent.com/shelbybachman/RA-tutorial-2019/master/07-matlab_part2/matlab_part2.m)
 <br>
 [files](https://github.com/shelbybachman/RA-tutorial-2019/raw/master/07-matlab_part2/files.zip)
+
+## Week 8: MATLAB part III (intro to Psychtoolbox)
+[slides](https://shelbybachman.github.io/RA-tutorial-2019/08-matlab_part3/)
+<br>
+[files](https://github.com/shelbybachman/RA-tutorial-2019/raw/master/08-matlab_part3/files.zip)
