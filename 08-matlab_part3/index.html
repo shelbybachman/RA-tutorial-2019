@@ -107,7 +107,7 @@ slide:not(.segue) h2{
 </tr>
 <tr>
 <td><strong>jul 19</strong></td>
-<td><strong>MATLAB part III: building a basic experiment in Psychtoolbox</strong></td>
+<td><strong>MATLAB part III: intro to Psychtoolbox</strong></td>
 </tr>
 <tr>
 <td>jul 26</td>
@@ -115,7 +115,7 @@ slide:not(.segue) h2{
 </tr>
 <tr>
 <td>aug 2</td>
-<td>MATLAB part IV: building a basic experiment in Psychtoolbox (cont.)</td>
+<td>MATLAB part IV: building a basic experiment in Psychtoolbox</td>
 </tr>
 <tr>
 <td>aug 9</td>
@@ -166,14 +166,18 @@ slide:not(.segue) h2{
 
 <p><em>Advantages of PTB</em>: </p>
 
-<pre><code>- Precise and flexible commands for: 
-    - timing
-    - response collection
-    - device control
-- Relatively simple to learn if you are comfortable with MATLAB
-- Widely used in psychology &amp; cognitive neuroscience
-- Large online community of users
-</code></pre>
+<ul>
+<li>Precise and flexible commands for: 
+
+<ul>
+<li>timing</li>
+<li>response collection</li>
+<li>device control</li>
+</ul></li>
+<li>Relatively simple to learn if you are comfortable with MATLAB</li>
+<li>Widely used in psychology &amp; cognitive neuroscience</li>
+<li>Large online community of users</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -186,12 +190,19 @@ slide:not(.segue) h2{
   <article data-timings="">
     <p><em>Disadvantages of PTB</em>: </p>
 
-<pre><code>- Less and less support for Mac OS
-- Complicated to move code from one operating system to another
-    - or one computer to another
-- Code-only interface
-    - as opposed a builder interface (e.g. E-Prime)
-</code></pre>
+<ul>
+<li>Less and less support for Mac OS</li>
+<li>Complicated to move code from one operating system to another
+
+<ul>
+<li>or one computer to another</li>
+</ul></li>
+<li>Code-only interface
+
+<ul>
+<li>as opposed a builder interface (e.g. E-Prime)</li>
+</ul></li>
+</ul>
 
 <p>One alternative that I personally like is <a href="https://www.psychopy.org/">PsychoPy</a>, which combines both a coder and builder interface and is easy to transfer from one operating system to another. </p>
 
@@ -240,6 +251,8 @@ slide:not(.segue) h2{
 <li>Find Psychtoolbox directory and add it</li>
 <li>Save the result</li>
 </ul>
+
+<p>(<em>If you ran the <code>SetupPsychtoolbox</code> script in the last section, this should already be done. Check that Psychtoolbox is added to your path.</em>)</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -296,7 +309,7 @@ slide:not(.segue) h2{
 </center></p>
 
 <pre><code class="octave">
-[x1 x2 y1 y2]
+[x1 y1 x2 y2]
 
 </code></pre>
 
@@ -311,7 +324,7 @@ slide:not(.segue) h2{
   <article data-timings="">
     <p>We are often going to be collecting responses in our experiments using the keyboard. When using Psychtoolbox, we will use a system in which each key has a unique code. </p>
 
-<p>For instance, the key <code>j</code> has a code of X.</p>
+<p>For instance, the key <code>j</code> has a code of 13.</p>
 
 <p>We use the <code>KbName()</code> function to retrieve either the code associated with a letter:</p>
 
@@ -320,7 +333,7 @@ slide:not(.segue) h2{
 
 <p class='..or'>the letter associated with a code:</p>
 
-<pre><code class="octave">KbName(X)
+<pre><code class="octave">KbName(13)
 </code></pre>
 
 <p>By default, different operating systems have different key codes. We will &quot;unify&quot; them across operating systems using the <code>KbUnifyNames</code> when setting the parameters for our experiments.</p>

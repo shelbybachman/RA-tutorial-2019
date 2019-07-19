@@ -45,9 +45,9 @@ jun 21    | R part IV: review & writing a script
 jun 27    | MATLAB part I: syntax, data types & operations
 jul 5     | no tutorial
 jul 12    | MATLAB part II: control flow, scripts & functions
-**jul 19**    | **MATLAB part III: building a basic experiment in Psychtoolbox**
+**jul 19**    | **MATLAB part III: intro to Psychtoolbox**
 jul 26    | no tutorial
-aug 2     | MATLAB part IV: building a basic experiment in Psychtoolbox (cont.)
+aug 2     | MATLAB part IV: building a basic experiment in Psychtoolbox 
 aug 9     | data lab: collecting some data using matlab & Psychtoolbox
 aug 16    | data lab: tidying & analyzing our collected data in R
 
@@ -73,13 +73,13 @@ aug 16    | data lab: tidying & analyzing our collected data in R
 
 *Advantages of PTB*: 
 
-    - Precise and flexible commands for: 
-        - timing
-        - response collection
-        - device control
-    - Relatively simple to learn if you are comfortable with MATLAB
-    - Widely used in psychology & cognitive neuroscience
-    - Large online community of users
+  - Precise and flexible commands for: 
+      - timing
+      - response collection
+      - device control
+  - Relatively simple to learn if you are comfortable with MATLAB
+  - Widely used in psychology & cognitive neuroscience
+  - Large online community of users
 
 --- .class #id 
 
@@ -88,11 +88,11 @@ aug 16    | data lab: tidying & analyzing our collected data in R
 
 *Disadvantages of PTB*: 
 
-    - Less and less support for Mac OS
-    - Complicated to move code from one operating system to another
-        - or one computer to another
-    - Code-only interface
-        - as opposed a builder interface (e.g. E-Prime)
+  - Less and less support for Mac OS
+  - Complicated to move code from one operating system to another
+      - or one computer to another
+  - Code-only interface
+      - as opposed a builder interface (e.g. E-Prime)
 
 One alternative that I personally like is [PsychoPy](https://www.psychopy.org/), which combines both a coder and builder interface and is easy to transfer from one operating system to another. 
 
@@ -127,6 +127,8 @@ To add the `Psychtoolbox` directory and its subfolders to your MATLAB path:
 - Home Tab --> Set Path --> Add with Subfolders -->
 - Find Psychtoolbox directory and add it
 - Save the result
+
+(*If you ran the `SetupPsychtoolbox` script in the last section, this should already be done. Check that Psychtoolbox is added to your path.*)
 
 --- .class #id
 
@@ -163,7 +165,7 @@ To add the `Psychtoolbox` directory and its subfolders to your MATLAB path:
 
 ```octave
 
-[x1 x2 y1 y2]
+[x1 y1 x2 y2]
 
 ```
 
@@ -173,7 +175,7 @@ To add the `Psychtoolbox` directory and its subfolders to your MATLAB path:
 
 We are often going to be collecting responses in our experiments using the keyboard. When using Psychtoolbox, we will use a system in which each key has a unique code. 
 
-For instance, the key `j` has a code of X.
+For instance, the key `j` has a code of 13.
 
 We use the `KbName()` function to retrieve either the code associated with a letter:
 
@@ -186,7 +188,7 @@ KbName('j')
 
 
 ```octave
-KbName(X)
+KbName(13)
 ```
 
 By default, different operating systems have different key codes. We will "unify" them across operating systems using the `KbUnifyNames` when setting the parameters for our experiments.
