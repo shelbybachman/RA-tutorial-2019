@@ -47,27 +47,6 @@ KbName('UnifyKeyNames')
 % this script opens a PTB screen filling a part of your computer screen
 % (this can be useful for testing)
 
-%% open a blank screen and close it
-
-% let's test our open_screen_partial script now
-% by drawing a blank screen,
-% pausing for 5 seconds,
-% and then closing it
-
-% we will need to write out all the commands first,
-% and then run the entire section
-% do this below
-% (hint: we'll use PTB's built-in WaitSecs) function
-
-% open a partial screen
-open_screen_partial
-
-% wait 5 seconds
-WaitSecs(5)
-
-% close the all screens
-Screen('CloseAll')
-
 %% open a screen with text
 
 % in this section we will draw a gray screen with text
@@ -82,15 +61,9 @@ Screen('CloseAll')
 text = ['Hello! \n\n'...
     'Welcome to the experiment.'];
 
-% to display our text, do the following and then run the entire section at
-% once:
-% (a) open a blank screen (use the script `open_screen_partial`)
-% (b) draw text on the back screen
-% (c) flip the back screen to the front
-% (d) wait 5 seconds
-% (e) close the screen
+%%%%%%%%%% CODE:
 
-% open a partial screen
+% open a partial screen by calling the open_screen_partial script
 open_screen_partial
 
 % draw text on the back screen
@@ -117,16 +90,7 @@ Screen('CloseAll')
 text_2 = ['We are now going to review the instructions. \n\n'...
     'In this task, you will see a series of words on the screen.'];
 
-% to do this, write code for the following steps and then run the entire
-% section at once:
-% (a) open a blank screen (use the script `open_screen_partial`)
-% (b) draw text on the back screen
-% (c) flip the back screen to the front
-% (d) wait 5 seconds
-% (e) draw text_2 on the back screen
-% (f) flip the back screen to the front
-% (g) wait 4 seconds
-% (h) close the screen
+%%%%%%%% CODE:
 
 % open a partial screen
 open_screen_partial
@@ -147,11 +111,10 @@ DrawFormattedText(w, text_2, 'center', 'center', textColor);
 Screen('Flip', w); 
 
 % wait 4 seconds
-WaitSecs(5)
+WaitSecs(4)
 
 % close the screen
 Screen('CloseAll')
-
 
 %% open a screen with text and flip to next screen after a keypress
 
@@ -174,8 +137,7 @@ Screen('CloseAll')
 % we need to first define a code representing our key of interest
 % use the KbName() command with 'space' as an argument to do this,
 % defining the code as "code_space"
-
-
+code_space = KbName('space');
 
 % how this will work:
 % once we open the screen and are waiting for a response,
@@ -187,32 +149,34 @@ Screen('CloseAll')
 % after it is received, we un-restrict all keys
 % and then we flip to the next screen
 
-% try coding the steps below:
-% (a) open a blank screen (use the script `open_screen_partial`)
-% (b) draw text on the back screen
-% (c) flip the back screen to the front
-% (d) wait for a press of the spacebar
-% (e) draw text_2 on the back screen
-% (f) flip the back screen to the front
-% (g) wait for a press of the spacebar to close the screen
-% (h) close the screen
+%%%%%%%%% CODE:
 
-open_screen_partial   
+% open a blank screen (use the script `open_screen_partial`)
+open_screen_partial  
+
+% draw text on the back screen
 DrawFormattedText(w, text, 'center', 'center', textColor);
+
+% flip the back screen to the front
 Screen('Flip', w); 
 
+% wait for a press of the spacebar
 RestrictKeysForKbCheck(code_space); % restrict keys to spacebar only
 KbStrokeWait; % wait for a keystroke (of the spacebar)
 RestrictKeysForKbCheck([]); % re-enable all keys
 
+% draw text_2 on the back screen
 DrawFormattedText(w, text_2, 'center', 'center', textColor);
+
+% flip the back screen to the front
 Screen('Flip', w); 
 
+% wait for a press of the spacebar to close the screen
 RestrictKeysForKbCheck(code_space); % restrict keys to spacebar only
 KbStrokeWait; % wait for a keystroke (of the spacebar)
 RestrictKeysForKbCheck([]); % re-enable all keys
 
-
+% close the screen
 Screen('CloseAll')
 
 %% open a screen with text, flip to next screen after keypress, & record timing of the keypress
@@ -223,15 +187,15 @@ Screen('CloseAll')
 
 % in the section below, copy over the code from the last section
 % and modify it such that we flip to a third screen
-% that displays the text, text_3, "Press the b key to move on."
+% that displays the text "Press the b key to move on."
 
-% create string, text_3, "press the b key to move on"
-
+% create string, text_3, "press the b key to move on."
+text_3 = 'Press the b key to move on.';
 
 % save the code for the 'b' key as code_b
+code_b = KbName('b');
 
-
-% code the following steps:
+% how this works:
 % (a) open a blank screen
 % (b) draw text on the back screen
 % (c) flip the back screen to the front
@@ -243,6 +207,7 @@ Screen('CloseAll')
 % (i) wait for a press of the j key and record the response time
 % (j) close all the screens
 
+%%%%%%%% CODE: 
 % open a screen 
 open_screen_partial
 
@@ -290,10 +255,10 @@ Screen('CloseAll')
 %% check responses
 
 % return the reaction time. was it fast?
-
+%respTime
 
 % return the key pressed. was it b?
-
+%respKey
 
 %% open a screen with text, flip to next screen after keypress, & display feedback
 
@@ -307,7 +272,7 @@ Screen('CloseAll')
 % `feedback_fast` ("You were fast enough!") if RT is less than 3 seconds
 % `feedback_slow` ("You were too slow!") if RT is >= 3 seconds
 
-% code the following steps:
+% how it works:
 % (a) open a blank screen
 % (b) draw text on the back screen
 % (c) flip the back screen to the front
@@ -321,6 +286,9 @@ Screen('CloseAll')
 % (k) flip the screen
 % (h) wait for 4 seconds before closing the screen
 % (j) close all the screens
+
+%%%%%%%% CODE:
+
 % open a screen 
 open_screen_partial
 
@@ -393,47 +361,50 @@ Screen('CloseAll')
 % and then feedback on the next screen, indicating whether or not the
 % response was correct
 
-% set the textColor_green to be the vector reflecting blue's RGB values
-
+% set the textColor_green to be the vector reflecting green's RGB values
+textColor_green = [0 255 0];
 
 % set the keypress codes for red(r), green(g), blue(b)
-
+code_red = KbName('r');
+code_green = KbName('g');
+code_blue = KbName('b');
 
 % create a vector containing all three of these codes
-
-
+keys_to_listen = [code_red code_green code_blue];
 
 % set the word we will show, word_to_show, as a string, 'BLUE'
+word_to_show = 'BLUE';
 
-
-
-% add a few lines of instruction text that will follow our current
+% add a few lines of instruction text, `text_instructions`, that will follow our current
 % instruction screen
-
-
-
+text_instructions = ['Your task is to press a key to indicate \n\n'...
+    'the color in which the word is printed. \n\n\n\n'...
+    'If the word is printed in red, press the R key. \n\n'...
+    'If the word is printed in green, press the G key. \n\n'...
+    'If the word is printed in blue, press the B key. \n\n\n\n'...
+    'Please respond as quickly and as accurately as possible. \n\n'...
+    'Press the spacebar to start.'];
 
 %%%%% set parameters for the fixation cross
 % set the dimensions of the cross as fix_dim (how wide across the cross
 % should be, in pixels)
-
+fix_dim = 20;
 
 % set the x coordinates of the cross as fix_x
-
+fix_x = [-fix_dim fix_dim 0 0];
 
 % set the y coordinates of the cross as fix_y
-
+fix_y = [0 0 -fix_dim fix_dim];
 
 % combine the x and y coordinates as a matrix, fix_coords
 % with x coordinates in row 1
 % and y coordinates in row 2
-
+fix_coords = [fix_x; fix_y];
 
 % set the width of the cross lines, fix_lineWidth, as 2
+fix_lineWidth = 2;
 
-
-
-% code the following steps:
+% how it works:
 % (a) open a blank screen
 % (b) draw text on the back screen
 % (c) flip the back screen to the front
@@ -515,8 +486,11 @@ end
 % create an if statement that shows text based on whether or not they were
 % correct
 % then draw the text, and flip the screen immediately
-% TBA
-
+if respKey == code_green
+    text_resp = 'Correct. \n\nGreat job!';
+elseif respKey ~= code_green
+    text_resp = 'Incorrect. Better luck next time!';
+end
 
 DrawFormattedText(w, text_resp, 'center', 'center', textColor);
 Screen('Flip', w) 
@@ -527,9 +501,3 @@ WaitSecs(4)
 % close the screen
 Screen('CloseAll')
 
-%% create a script which runs the section above
-
-% copy all text from the above section
-% include sections that setup and set directories
-% save the script as stroop_task.m
-% we will elaborate on this script next time!
