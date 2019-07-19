@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MATLAB part III (introduction to Psychtoolbox)</title>
+  <meta charset="utf-8">
+  <meta name="description" content="MATLAB part III (introduction to Psychtoolbox)">
+  <meta name="author" content="shelby bachman">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>MATLAB part III (introduction to Psychtoolbox)</h1>
+    <h2>RA tutorial week 8, summer 2019</h2>
+    <p>shelby bachman<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+.title-slide {
+  background-color: #bbbcce; /* #EDE0CF; ; #CA9F9D*/
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic
+}
+.title-slide hgroup > h1{
+  font-family: 'Oswald';
+}
+
+.title-slide hgroup > h2{
+  font-family: 'Oswald','Calibri';
+}
+slide:not(.segue) h2{
+  font-family: Trebuchet MS; /*, 'Oswald', sans-serif; */
+}
+</style>
+
+<h2>Overview</h2>
+
+<table><thead>
+<tr>
+<th>week</th>
+<th>topic</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>may 24</td>
+<td>literature search &amp; reference management</td>
+</tr>
+<tr>
+<td>may 31</td>
+<td>R part I: syntax &amp; data types</td>
+</tr>
+<tr>
+<td>jun 7</td>
+<td>R part II: data import &amp; cleaning with dplyr</td>
+</tr>
+<tr>
+<td>jun 14</td>
+<td>R part III: tidy data &amp; plotting with ggplot2</td>
+</tr>
+<tr>
+<td>jun 21</td>
+<td>R part IV: review &amp; writing a script</td>
+</tr>
+<tr>
+<td>jun 27</td>
+<td>MATLAB part I: syntax, data types &amp; operations</td>
+</tr>
+<tr>
+<td>jul 5</td>
+<td>no tutorial</td>
+</tr>
+<tr>
+<td>jul 12</td>
+<td>MATLAB part II: control flow, scripts &amp; functions</td>
+</tr>
+<tr>
+<td><strong>jul 19</strong></td>
+<td><strong>MATLAB part III: building a basic experiment in Psychtoolbox</strong></td>
+</tr>
+<tr>
+<td>jul 26</td>
+<td>no tutorial</td>
+</tr>
+<tr>
+<td>aug 2</td>
+<td>MATLAB part IV: building a basic experiment in Psychtoolbox (cont.)</td>
+</tr>
+<tr>
+<td>aug 9</td>
+<td>data lab: collecting some data using matlab &amp; Psychtoolbox</td>
+</tr>
+<tr>
+<td>aug 16</td>
+<td>data lab: tidying &amp; analyzing our collected data in R</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Today</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Psychtoolbox
+
+<ul>
+<li>overview</li>
+<li>installation</li>
+<li>key concepts</li>
+</ul></li>
+<li>Writing our experiment
+
+<ul>
+<li>overview of components</li>
+<li>setting parameters</li>
+<li>opening a screen</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Psychtoolbox</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>Psychtoolbox</strong> is a software package that adds low-level control of stimulus presentation to interpreted languages such as MATLAB.</p>
+
+<p><em>Advantages of PTB</em>: </p>
+
+<pre><code>- Precise and flexible commands for: 
+    - timing
+    - response collection
+    - device control
+- Relatively simple to learn if you are comfortable with MATLAB
+- Widely used in psychology &amp; cognitive neuroscience
+- Large online community of users
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Psychtoolbox (cont.)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><em>Disadvantages of PTB</em>: </p>
+
+<pre><code>- Less and less support for Mac OS
+- Complicated to move code from one operating system to another
+    - or one computer to another
+- Code-only interface
+    - as opposed a builder interface (e.g. E-Prime)
+</code></pre>
+
+<p>One alternative that I personally like is <a href="https://www.psychopy.org/">PsychoPy</a>, which combines both a coder and builder interface and is easy to transfer from one operating system to another. </p>
+
+<p>Alternatively, <a href="https://www.jspsych.org/">jspsych</a> is a javascript-based library for running experiments in the browser.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Installing Psychtoolbox</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>If you are using a Mac</strong>: </p>
+
+<ul>
+<li>Navigate <a href="https://github.com/Psychtoolbox-3/Psychtoolbox-3/tree/PTB_Beta-2018-11-25_V3.0.15">here</a></li>
+<li>Download by clicking <code>Clone or download</code> --&gt; <code>Download ZIP</code>, and unzip the downloaded folder</li>
+<li>Navigate into the downloaded folder</li>
+<li>Copy the directory <code>Psychtoolbox</code> into your <code>Applications</code> folder</li>
+<li>Open MATLAB</li>
+<li><code>cd</code> into the <code>Psychtoolbox</code> directory in your <code>Applications</code> folder</li>
+<li>Enter the following command and press Enter: <code>SetupPsychToolbox</code></li>
+</ul>
+
+<p><strong>If you are using Windows</strong>: </p>
+
+<p>Please follow the instructions at <a href="http://psychtoolbox.org/download.html#Windows">this link</a>.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Adding Psychtoolbox to your path</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Once Psychtoolbox is installed, you&#39;ll want to add it to your MATLAB <em>path</em>. Adding a file or set of files to your path means that MATLAB will know where to &quot;look&quot; for those files.</p>
+
+<p>To add the <code>Psychtoolbox</code> directory and its subfolders to your MATLAB path:</p>
+
+<ul>
+<li>Home Tab --&gt; Set Path --&gt; Add with Subfolders --&gt;</li>
+<li>Find Psychtoolbox directory and add it</li>
+<li>Save the result</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Psychtoolbox concepts</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Drawing a screen</li>
+<li>Collecting and deciphering keypress responses</li>
+<li>Controlling and measuring timing</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Drawing a screen</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="images/screen.png?raw=true" alt="">
+</center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>RGB color codes</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="images/rgb_values.png?raw=true" alt="">
+</center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Positioning things on the screen</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center>
+<img src="images/coordinates.png?raw=true" alt="">
+</center></p>
+
+<pre><code class="octave">
+[x1 x2 y1 y2]
+
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Collecting keypress responses</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We are often going to be collecting responses in our experiments using the keyboard. When using Psychtoolbox, we will use a system in which each key has a unique code. </p>
+
+<p>For instance, the key <code>j</code> has a code of X.</p>
+
+<p>We use the <code>KbName()</code> function to retrieve either the code associated with a letter:</p>
+
+<pre><code class="octave">KbName(&#39;j&#39;)
+</code></pre>
+
+<p class='..or'>the letter associated with a code:</p>
+
+<pre><code class="octave">KbName(X)
+</code></pre>
+
+<p>By default, different operating systems have different key codes. We will &quot;unify&quot; them across operating systems using the <code>KbUnifyNames</code> when setting the parameters for our experiments.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Collecting keypress responses (cont.)</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="octave">
+[keyIsDown, secs, keyCode] = KbCheck;
+
+</code></pre>
+
+<p><code>keyIsDown</code>: was a key pressed? (1=yes, 0=no)
+<code>secs</code>: timestamp when the key was pressed
+<code>keyCode</code>: a vector of 1/0s for all keys; the value for the key that was pressed is 1</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Let&#39;s get started using Psychtoolbox</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Download the zip file containing script for this week. Open all the scripts in MATLAB, and let&#39;s get started!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Next week</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>There is no tutorial next week! We will resume on <em>August 2</em> at <strong>10:30am</strong> to start building our stroop task in Psychtoolbox. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Today'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Psychtoolbox'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Psychtoolbox (cont.)'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Installing Psychtoolbox'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Adding Psychtoolbox to your path'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Psychtoolbox concepts'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Drawing a screen'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='RGB color codes'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Positioning things on the screen'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Collecting keypress responses'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Collecting keypress responses (cont.)'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Let&#39;s get started using Psychtoolbox'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Next week'>
+         14
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
