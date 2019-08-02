@@ -1,6 +1,6 @@
 ---
 title       : MATLAB part IV (building an experiment)
-subtitle    : RA tutorial week 8, summer 2019
+subtitle    : RA tutorial week 9, summer 2019
 author      : shelby bachman
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -48,8 +48,8 @@ jul 12    | MATLAB part II: control flow, scripts & functions
 jul 19    | MATLAB part III: intro to Psychtoolbox
 jul 26    | no tutorial
 **aug 2**     | **MATLAB part IV: building a basic experiment in Psychtoolbox**
-aug 9     | data lab: collecting some data using matlab & Psychtoolbox
-aug 16    | data lab: tidying & analyzing our collected data in R
+aug 9     | data lab: tidying & analyzing our collected data in R
+aug 16    | data lab: miscellaneous topics
 
 --- .class #id
 
