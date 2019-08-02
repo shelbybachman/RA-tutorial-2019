@@ -45,4 +45,4 @@
 ## Week 9: MATLAB part IV (building a basic experiment in Psychtoolbox)
 [slides](https://shelbybachman.github.io/RA-tutorial-2019/09-matlab_part4/)
 <br>
-[files](https://github.com/shelbybachman/RA-tutorial-2019/raw/master/09-matlab_part4/files.zip)
+[files](https://github.com/shelbybachman/RA-tutorial-2019/raw/master/09-matlab_part4/stroop.zip)
