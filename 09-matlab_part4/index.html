@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MATLAB part IV (building an experiment)</title>
+  <meta charset="utf-8">
+  <meta name="description" content="MATLAB part IV (building an experiment)">
+  <meta name="author" content="shelby bachman">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>MATLAB part IV (building an experiment)</h1>
+    <h2>RA tutorial week 8, summer 2019</h2>
+    <p>shelby bachman<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+.title-slide {
+  background-color: #bbbcce; /* #EDE0CF; ; #CA9F9D*/
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic
+}
+.title-slide hgroup > h1{
+  font-family: 'Oswald';
+}
+
+.title-slide hgroup > h2{
+  font-family: 'Oswald','Calibri';
+}
+slide:not(.segue) h2{
+  font-family: Trebuchet MS; /*, 'Oswald', sans-serif; */
+}
+</style>
+
+<h2>Overview</h2>
+
+<table><thead>
+<tr>
+<th>week</th>
+<th>topic</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>may 24</td>
+<td>literature search &amp; reference management</td>
+</tr>
+<tr>
+<td>may 31</td>
+<td>R part I: syntax &amp; data types</td>
+</tr>
+<tr>
+<td>jun 7</td>
+<td>R part II: data import &amp; cleaning with dplyr</td>
+</tr>
+<tr>
+<td>jun 14</td>
+<td>R part III: tidy data &amp; plotting with ggplot2</td>
+</tr>
+<tr>
+<td>jun 21</td>
+<td>R part IV: review &amp; writing a script</td>
+</tr>
+<tr>
+<td>jun 27</td>
+<td>MATLAB part I: syntax, data types &amp; operations</td>
+</tr>
+<tr>
+<td>jul 5</td>
+<td>no tutorial</td>
+</tr>
+<tr>
+<td>jul 12</td>
+<td>MATLAB part II: control flow, scripts &amp; functions</td>
+</tr>
+<tr>
+<td>jul 19</td>
+<td>MATLAB part III: intro to Psychtoolbox</td>
+</tr>
+<tr>
+<td>jul 26</td>
+<td>no tutorial</td>
+</tr>
+<tr>
+<td><strong>aug 2</strong></td>
+<td><strong>MATLAB part IV: building a basic experiment in Psychtoolbox</strong></td>
+</tr>
+<tr>
+<td>aug 9</td>
+<td>data lab: collecting some data using matlab &amp; Psychtoolbox</td>
+</tr>
+<tr>
+<td>aug 16</td>
+<td>data lab: tidying &amp; analyzing our collected data in R</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Today</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>A few miscellaneous MATLAB topics
+
+<ul>
+<li>tables</li>
+<li>random number generators</li>
+<li>getting user input</li>
+</ul></li>
+<li>Creating our experiment
+
+<ul>
+<li>structure of task</li>
+<li>file &amp; directory structure</li>
+<li>writing some code!</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>MATLAB tables</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The <strong>table</strong> is MATLAB&#39;s version of the dataframe that we learned about in R. We saw that dataframes were advantageous because they can combine multiple variable classes into a single data type; we can do the same thing with tables. I prefer to use tables to save my data and try to avoid using arrays.</p>
+
+<p>Create a table consisting of vectors and cell arrays as follows:</p>
+
+<pre><code class="r">trial = [1 2 3];
+color = {&#39;blue&#39;, &#39;green&#39;, &#39;red&#39;};
+our_table = table(trial&#39;, color&#39;);
+</code></pre>
+
+<pre><code>##   trial color
+## 1     1  blue
+## 2     2 green
+## 3     3   red
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>MATLAB tables</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We can perform many operations on tables, such as filtering, joining, and subsetting, similar to what we did with dataframes in R. I encourage you to explore all the different things you can do with tables <a href="https://www.mathworks.com/help/matlab/tables.html">link</a>.</p>
+
+<p>We can use the <code>height()</code> command to find the number of rows in a table:</p>
+
+<pre><code class="r">height(our_table)
+</code></pre>
+
+<p>We set variable names using the following syntax:</p>
+
+<pre><code class="r">our_table.Properties.VariableNames = {&#39;trial&#39;, &#39;color&#39;};
+</code></pre>
+
+<p>We index columns using the <code>.</code> operator:</p>
+
+<pre><code class="r">our_table.color 
+our_table.response = NaN([height(our_table) 1]);
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>MATLAB tables (cont.)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Another great thing about tables is that we can save them nicely as <code>.csv</code> files using the <code>writetable()</code> function. We will use this function today to save the results of our experiment:</p>
+
+<pre><code class="r">file_name &lt;-&#39;resultsFile.csv&#39;;
+writetable(our_table, file_name);
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Random number generation</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>When we randomize numbers in MATLAB, it is important to use a <strong>random number generator</strong> with a <strong>seed</strong>. Otherwise, we might end up getting sequences of numbers that are identical from one participant to the next.</p>
+
+<p>There are many ways to do this: for one, we can seed the random number generator based on the current date and time:</p>
+
+<pre><code class="r">rng(&#39;shuffle&#39;)
+</code></pre>
+
+<p>But sometimes we want to be able to regenerate the number sequence we generated. To do this, we can seed the random number generator with a specific number, and then if we do it again in the future, we will get the same sequence of numbers. In experiments, I use the subject ID as the seed. Either approach is valid, just make sure you use a random number generator!</p>
+
+<pre><code class="r">rng(subID)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Getting user input</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Often you will want to collect input from the user in MATLAB. (This is distinct from collecting keypresses during an experiment, which we learned last week).</p>
+
+<p>For instance, you may want to have your experiment script ask the user for a subject ID at the start of an experiment (other fields may include group, whether to use certain equipment, etc.).</p>
+
+<p>Ask the user for input in the command window as follows:</p>
+
+<pre><code class="r">subID = input(&#39;Enter the subject ID: &#39;);
+</code></pre>
+
+<p>Ask the user for input in a dialog box: (<em>Note</em> that the responses are stored as strings.)</p>
+
+<pre><code class="r">prompt = {&#39;Enter the subject ID: &#39;, &#39;Enter the group #: &#39;};
+name = &#39;User input&#39;;
+numLines = 1;
+defaultanswer = {&#39;999&#39;, &#39;1&#39;};
+user_input = inputdlg(prompt, name, numLines, defaultanswer);
+subID = str2num(user_input{1});
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Our experiment: Stroop task</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Today we are going to build a basic experiment in Psychtoolbox. We will create a very basic version of the Stroop task, in which a participant is presented with a series of color words, printed in different colors, and must press a key to indicate the color in which each word is printed.</p>
+
+<p><center>
+<img src="images/stroop_task.png?raw=true" alt="">
+</center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>File &amp; directory structure of our experiment</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>I have posted a zipped directory containing files for the experiment. Within the main experiment directory (<code>stroop</code>), you will see a parent script, which runs the experiment, and multiple subdirectories:</p>
+
+<p><center>
+<img src="images/file_structure.png?raw=true" alt="">
+</center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Files we will use and create</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>stroop/stroop_task.m</code>: parent script that runs the task</li>
+<li><code>stroop/scripts/</code>: contains scripts and functions that will be called by the parent script</li>
+<li><code>stroop/results</code>: results files will be saved here</li>
+<li><code>stroop/scripts/set_parameters.m</code>: sets experimental parameters</li>
+<li><code>stroop/scripts/open_screen.m</code>: opens a Psychtoolbox screen</li>
+<li><code>stroop/scripts/run_instructions.m</code>: shows task instructions</li>
+<li><code>stroop/scripts/run_trials.m</code>: runs task trials</li>
+<li><code>stroop/scripts/close_experiment.m</code>: closes screen and exits</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Let&#39;s get started coding the experiment</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Download the zipped directory containing files for the experiment. Navigate into the unzipped directory in MATLAB (<code>stroop</code>), and let&#39;s get started!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Next week</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Your assignment for next week is to do the experiment once yourself (assign IDs now). You should have one saved results file. Once you do that, send the results file to me.</p>
+
+<p>Next week, we will compile the data that everyone collected and do some basic analyses and plots of the data in R!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Today'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='MATLAB tables'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='MATLAB tables'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='MATLAB tables (cont.)'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Random number generation'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Getting user input'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Our experiment: Stroop task'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='File &amp; directory structure of our experiment'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Files we will use and create'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Let&#39;s get started coding the experiment'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Next week'>
+         12
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
