@@ -46,3 +46,8 @@
 [slides](https://shelbybachman.github.io/RA-tutorial-2019/09_10-matlab_part4/)
 <br>
 [files](https://github.com/shelbybachman/RA-tutorial-2019/raw/master/09_10-matlab_part4/stroop.zip)
+
+## Week 11: R part V (analyzing experimental results)
+[slides](https://shelbybachman.github.io/RA-tutorial-2019/11-R_part5/)
+<br>
+[data](https://github.com/shelbybachman/RA-tutorial-2019/raw/master/11-R_part5/data.zip)
