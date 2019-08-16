@@ -50,4 +50,6 @@
 ## Week 11: R part V (analyzing experimental results)
 [slides](https://shelbybachman.github.io/RA-tutorial-2019/11-R_part5/)
 <br>
+[script](https://raw.githubusercontent.com/shelbybachman/RA-tutorial-2019/master/11-R_part5/R_part5.R)
+<br>
 [data](https://github.com/shelbybachman/RA-tutorial-2019/raw/master/11-R_part5/data.zip)
