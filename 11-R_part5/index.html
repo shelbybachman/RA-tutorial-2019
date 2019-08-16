@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>R part V: analysis of experimental results</title>
+  <meta charset="utf-8">
+  <meta name="description" content="R part V: analysis of experimental results">
+  <meta name="author" content="shelby bachman">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>R part V: analysis of experimental results</h1>
+    <h2>RA tutorial week 11, summer 2019</h2>
+    <p>shelby bachman<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+.title-slide {
+  background-color: #bbbcce; /* #EDE0CF; ; #CA9F9D*/
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic
+}
+.title-slide hgroup > h1{
+  font-family: 'Oswald';
+}
+
+.title-slide hgroup > h2{
+  font-family: 'Oswald','Calibri';
+}
+slide:not(.segue) h2{
+  font-family: Trebuchet MS; /*, 'Oswald', sans-serif; */
+}
+</style>
+
+<h2>Overview</h2>
+
+<table><thead>
+<tr>
+<th>week</th>
+<th>topic</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>may 24</td>
+<td>literature search &amp; reference management</td>
+</tr>
+<tr>
+<td>may 31</td>
+<td>R part I: syntax &amp; data types</td>
+</tr>
+<tr>
+<td>jun 7</td>
+<td>R part II: data import &amp; cleaning with dplyr</td>
+</tr>
+<tr>
+<td>jun 14</td>
+<td>R part III: tidy data &amp; plotting with ggplot2</td>
+</tr>
+<tr>
+<td>jun 21</td>
+<td>R part IV: review &amp; writing a script</td>
+</tr>
+<tr>
+<td>jun 27</td>
+<td>MATLAB part I: syntax, data types &amp; operations</td>
+</tr>
+<tr>
+<td>jul 5</td>
+<td>no tutorial</td>
+</tr>
+<tr>
+<td>jul 12</td>
+<td>MATLAB part II: control flow, scripts &amp; functions</td>
+</tr>
+<tr>
+<td>jul 19</td>
+<td>MATLAB part III: intro to Psychtoolbox</td>
+</tr>
+<tr>
+<td>jul 26</td>
+<td>no tutorial</td>
+</tr>
+<tr>
+<td>aug 2</td>
+<td>MATLAB part IV: building a basic experiment in Psychtoolbox</td>
+</tr>
+<tr>
+<td>aug 9</td>
+<td>MATLAB part IV: building a basic experiment in Psychtoolbox (cont.)</td>
+</tr>
+<tr>
+<td><strong>aug 16</strong></td>
+<td><strong>R part V: analysis of experimental results</strong></td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Keep learning R!</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>[Links here]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Today</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>A few miscellaneous R commands
+
+<ul>
+<li>compiling data files</li>
+<li>working with strings</li>
+<li>saving ggplot2 objects</li>
+</ul></li>
+<li>Exploring, visualizing and analyzing the results of our stroop experiment
+
+<ul>
+<li>compiling individual data files</li>
+<li>review of steps to summarize and organize data</li>
+<li>summarizing and visualizing the data using dplyr &amp; ggplot2</li>
+<li>basic statistical analyses of our results</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Compiling multiple data files in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Last week, we created an experiment in Psychtoolbox, and this week, 4 of us did the experiment and generated a single <code>.csv</code> file with our own results. Today, we&#39;re going to analyze that data in R. The first thing we will need to do is <strong>compile</strong> the data from all 4 files into a single dataframe.</p>
+
+<p>One function that will be useful is <code>list.files()</code>, which lists all files in a given directory matching a specified pattern:</p>
+
+<pre><code class="r">list.files(&#39;./data&#39;, pattern = &#39;*.csv&#39;)
+</code></pre>
+
+<pre><code>[1] &quot;1_stroop.csv&quot; &quot;2_stroop.csv&quot; &quot;3_stroop.csv&quot; &quot;4_stroop.csv&quot;
+</code></pre>
+
+<p>We can then use a for-loop to loop over these files (see next slide).</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>For loops in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We used for loops extensively in MATLAB, and although I tend to try to minimize my use of for-loops in R, sometimes they are inevitable. For instance, today we will loop over a list of files, and on each iteration of the loop, load one data file. See an example below:</p>
+
+<pre><code class="r">library(data.table)
+myFiles &lt;- list.files(&#39;./data&#39;, pattern = &#39;*.csv&#39;)
+for (ii in 1:length(myFiles)) {
+  this_data_frame &lt;- fread(myFiles[ii])
+}
+</code></pre>
+
+<p>In fact, we will create a loop that not only loads a dataframe on each iteration but also adds that dataframe to a composite dataframe that will store the data for all subjects (e.g. from all iterations).</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Joining dataframes in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>There are two useful commands if you want to literally bind dataframes together (this is a distinct use case from dplyrs <code>left_join</code> and related join functions):</p>
+
+<p><code>rbind()</code> binds two dataframes by stacking rows on top of one another</p>
+
+<p><code>cbind()</code> binds two dataframes by stacking columns next to one another</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Working with strings in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Sometimes, you&#39;ll have string variables that need to be dealt with in more complex ways. For instance, you might want to extract a variable based on the name of a file (which is what we will do today).</p>
+
+<p>We created files such as <code>1_stroop.csv</code>. Today we will want to extract the subject ID from the filename and store it as a variable in the dataframe that is loaded. So, how can we extract the ID from the filename? The <code>stringr</code> package is useful for this instance (and all kinds of situations when you need to manipulate strings).</p>
+
+<p>Specifically, we will use the <code>str_split()</code> function within the <code>stringr</code> package to split a string at a specific place:</p>
+
+<pre><code class="r">filename &lt;- &#39;1_stroop.csv&#39;
+str_split(filename, &#39;_&#39;)
+</code></pre>
+
+<pre><code>[[1]]
+[1] &quot;1&quot;          &quot;stroop.csv&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Working with strings in R (cont.)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The output is a <strong>list</strong>, and we can index within the first element (<code>[[1]]</code>) to extract our string of interest:</p>
+
+<pre><code class="r">filename &lt;- &#39;1_stroop.csv&#39;
+split &lt;- str_split(filename, &#39;_&#39;)
+split[[1]][1]
+</code></pre>
+
+<pre><code>[1] &quot;1&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Let&#39;s get started compiling &amp; analyzing our data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Download the zipped directory of files for this week. It contains the data files to compile. </p>
+
+<p>Open RStudio, and open the script for today&#39;s tutorial.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Keep learning R!'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Today'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Compiling multiple data files in R'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='For loops in R'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Joining dataframes in R'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Working with strings in R'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Working with strings in R (cont.)'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Let&#39;s get started compiling &amp; analyzing our data'>
+         9
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
