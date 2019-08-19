@@ -55,7 +55,13 @@ aug 9     | MATLAB part IV: building a basic experiment in Psychtoolbox (cont.)
 
 ## Keep learning R!
 
-[Links here]
+- [Swirl](https://swirlstats.com/students.html)
+- [DataCamp](https://www.datacamp.com/)
+- [Statistics in R](https://www.statmethods.net/stats/index.html)
+- [Tidyverse Resources](https://www.tidyverse.org/learn/)
+- [R For Data Science](https://r4ds.had.co.nz/)
+
+When troubleshooting errors, try googling your error message. Chances are, someone else has had the same error. Another great site for asking questions is https://stackoverflow.com!
 
 --- .class #id
 
